@@ -3,10 +3,10 @@ import { getAlllOffer_Axios } from "./OfferServices";
 
 
 export const useGetAllOffer_ReactQuery = () => {
-  const { data: offer, isPending, error } = useQuery({
-    queryKey: ['offer'], 
+  const { data: offers, isPending, error } = useQuery({
+    queryKey: ['offers'], 
     queryFn: getAlllOffer_Axios, 
   });
 
-  return { offer, isPending, error };
+  return { offers, isPending, error };
 };
