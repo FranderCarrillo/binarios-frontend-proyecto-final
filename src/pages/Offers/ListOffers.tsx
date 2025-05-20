@@ -12,7 +12,10 @@ const ListOffers = () => {
     <div>
       <div className='card-container'>
         {offers?.map(offer=>(
-          <span key={offer.offerId}>{offer.job}</span>
+          <div>
+            <span key={offer.offerId}>{offer.job}</span>
+            <span>{offer.company?.name}</span>
+          </div>
         ))}
       </div>
     </div>

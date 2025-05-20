@@ -1,8 +1,13 @@
-import { logout } from '../../api/apiToken';
+import { login, logout } from '../../api/apiToken';
 import { useGetAllSkill_ReactQuery } from '../../services/Skills/SkillHoks';
 
 const ListSkills = () => {
     const { skills, isPending, error } = useGetAllSkill_ReactQuery();
+
+    login({
+        email: 'jose@gmail.com',
+        password: '1234'
+    });
 
     const LogOut = () =>{
         logout();
