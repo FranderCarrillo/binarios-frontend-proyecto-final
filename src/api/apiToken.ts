@@ -19,3 +19,7 @@ export async function login(auth: Auth): Promise<boolean> {
     return false;
   }
 }
+
+export function logout(): void {
+  localStorage.removeItem('token');
+}
