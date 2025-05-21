@@ -9,7 +9,7 @@ function App() {
   
   return (
     <QueryClientProvider client={queryClient}>
-      <ListOffers />
+      <ListSkills />
     </QueryClientProvider>
   )
 }
