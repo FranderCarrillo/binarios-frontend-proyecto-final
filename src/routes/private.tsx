@@ -2,6 +2,8 @@
 import { createRoute, Outlet, redirect, Link } from '@tanstack/react-router';
 import { rootRoute } from './__root';
 import Dashboard from '../pages/dashboard';
+import ListSkills from '../pages/Skills/ListSkills';
+import ListOffers from '../pages/Offers/ListOffers';
 
 const appLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -39,13 +41,13 @@ const dashboardRoute = createRoute({
 const offersRoute = createRoute({
   getParentRoute: () => appLayoutRoute,
   path: 'offers',
-  component: () => <div>📦 Lista de ofertas disponibles</div>,
+  component: () => <ListOffers />,
 });
 
 const skillsRoute = createRoute({
   getParentRoute: () => appLayoutRoute,
   path: 'skills',
-  component: () => <div>🛠️ Habilidades del usuario</div>,
+  component: () => <ListSkills />,
 });
 
 
@@ -53,8 +55,8 @@ const skillsRoute = createRoute({
 export const privateRoutes = [
   appLayoutRoute,
   dashboardRoute,
-  offersRoute,    // 👈 Asegúrate que estén aquí
-  skillsRoute,    // 👈 También esta
+  offersRoute,   
+  skillsRoute,    
 ];
 
 
