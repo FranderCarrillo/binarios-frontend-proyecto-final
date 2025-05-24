@@ -1,10 +1,10 @@
 // /src/router/private.tsx
 import { createRoute, redirect } from '@tanstack/react-router';
 import { rootRoute } from './__root';
-import Dashboard from '../pages/dashboard';
 import ListSkills from '../pages/Skills/ListSkills';
 import ListOffers from '../pages/Offers/ListOffers';
 import NavbarLayout from '../components/Layouts/NavbarLayout';
+import Dashboard from '../pages/dashboard';
 
 const appLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -19,7 +19,7 @@ const appLayoutRoute = createRoute({
 const dashboardRoute = createRoute({
   getParentRoute: () => appLayoutRoute,
   path: 'dashboard',
-  component: Dashboard,
+  component:() => <Dashboard/>,
 });
 
 const offersRoute = createRoute({

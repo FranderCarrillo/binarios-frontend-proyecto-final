@@ -5,3 +5,5 @@ export async function createCandidate(candidate: Candidate): Promise<Candidate>{
     const response = await apiAxios.post(`/Candidates`, candidate);
     return response.data;
 }
+
+

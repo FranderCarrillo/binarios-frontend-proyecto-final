@@ -2,30 +2,14 @@ import { useLoginMutation, useLogoutMutation } from '../../services/Auth/AuthHoo
 import { useGetAllSkill_ReactQuery } from '../../services/Skills/SkillHoks';
 
 const ListSkills = () => {
-    const { skills, isPending, error } = useGetAllSkill_ReactQuery();
+  const { skills, isPending, error } = useGetAllSkill_ReactQuery();
 
-    const loginMutation = useLoginMutation();
-    const logoutMutation = useLogoutMutation();
-
-    const handleLogin = () => {
-      loginMutation.mutateAsync({
-          email: 'jose@gmail.com',
-          password: '1234',
-          role : 'CANDIDATE'
-        })
-    .then(console.log);
-    }
-
-    const handleLogOut = () => {
-      logoutMutation.mutateAsync()
-      .then(console.log);
-    }
 
   if(isPending)
   return '...Loading'
 
   if(error)
-    <button onClick={handleLogin}>Login</button>
+    
 
   return (
     <div>
