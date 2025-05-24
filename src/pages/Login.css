@@ -52,13 +52,17 @@
   font-size: 1.2rem;
 }
 
-/* Input */
-.login-input {
+  /* Input */
+ .login-input {
   width: 100%;
   font-size: 1rem;
- 
-  color: black;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0.4rem 0;
+  color: #333;
 }
+
 
 /* Botón de login */
 .login-button {
