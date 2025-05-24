@@ -1,9 +1,10 @@
 // /src/router/auth.tsx
 import { createRoute, Outlet } from '@tanstack/react-router';
 import { rootRoute } from '../routes/__root';
-import SignUp from '../componets/SigIn/SignUp';
+import SignUp from '../componets/SignUp/SignUp';
 
-const logoutLayoutRoute = createRoute({
+
+const SignUptRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/logout',
   component: () => (
@@ -13,4 +14,4 @@ const logoutLayoutRoute = createRoute({
     </div>
   ),
 });
-export const logoutRoutes = [logoutLayoutRoute];
+export const guestRoute = [SignUptRoute];
