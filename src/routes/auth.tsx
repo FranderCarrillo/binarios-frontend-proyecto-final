@@ -7,8 +7,7 @@ const authLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
   component: () => (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <h2 className="text-xl mb-4">Zona pública</h2>
+    <div style={{ display: 'flex', alignItems: 'center', height: '100vh', width: '100%'}}>
       <Login />
       <Outlet />
     </div>
