@@ -1,5 +1,9 @@
 export interface Auth {
   email: string;
   password: string;
-  role : string;
+}
+
+export const AuthInitialState = { 
+  email: '',
+  password: '',
 }

@@ -12,7 +12,7 @@ const appLayoutRoute = createRoute({
   component: () => <NavbarLayout />,
   beforeLoad: () => {
     const token = localStorage.getItem('token');
-    if (!token) throw redirect({ to: '/login' });
+    if (!token) throw redirect({ to: '/' });
   },
 });
 

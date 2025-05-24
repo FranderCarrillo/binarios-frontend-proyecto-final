@@ -16,7 +16,7 @@ const NavbarLayout = () => {
             <Link to="/app/offers" className="[&.active]:font-bold text-blue-600">Offers</Link>{' '}
             <Link to="/app/skills" className="[&.active]:font-bold text-blue-600">Skills</Link>{' '}
             <Link
-              to="/login"
+              to="/"
               onClick={handleLogOut}
               className="ml-auto text-red-500"
             >

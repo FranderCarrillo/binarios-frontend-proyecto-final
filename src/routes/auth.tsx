@@ -9,16 +9,16 @@ const authLayoutRoute = createRoute({
   component: () => (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
       <h2 className="text-xl mb-4">Zona pública</h2>
-      {/* <ListSkills /> */}
+      <Login />
       <Outlet />
     </div>
   ),
 });
 
-const loginRoute = createRoute({
-  getParentRoute: () => authLayoutRoute,
-  path: 'login',
-  component: Login,
-});
+// const logoutRoute = createRoute({
+//   getParentRoute: () => authLayoutRoute,
+//   path: 'logout',
+//   component: Logout,
+// });
 
-export const authRoutes = [authLayoutRoute, loginRoute];
+export const authRoutes = [authLayoutRoute];

@@ -1,19 +1,17 @@
 import { useForm } from '@tanstack/react-form';
 import { useLoginMutation } from '../services/Auth/AuthHooks';
-import type { Auth } from '../models/Auth/Auth';
+import { AuthInitialState } from '../models/Auth/Auth';
+import { useNavigate } from '@tanstack/react-router';
 
 export default function Login() {
   const loginMutation = useLoginMutation();
+  const navigate = useNavigate();
 
   const form = useForm({
-  defaultValues: {
-    email: '',
-    password: '',
-    role: 'CANDIDATE',
-  } satisfies Auth,
+  defaultValues: AuthInitialState,
   onSubmit: async ({ value }) => {
     await loginMutation.mutateAsync(value);
-    window.location.href = '/app/dashboard';
+    navigate({ to: '/app/dashboard' });
   },
 });
 
@@ -57,14 +55,17 @@ export default function Login() {
           )}
         </form.Field>
 
-        <div>
-          <button
-            type="submit"
-          >
-            Iniciar sesión
-          </button>
-        </div>
+        <form.Subscribe
+              selector={(state) => [state.canSubmit, state.isSubmitting]}
+              children={([canSubmit, isSubmitting]) => (
+                <button type="submit" disabled={!canSubmit}>
+                  {isSubmitting ? '...' : 'Submit'}
+                </button>
+              )}
+        />
       </form>
+
+      <button onClick={() => navigate({ to: '/logout' })}>Registrate</button>
     </div>
   );
 }
