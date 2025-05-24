@@ -1,6 +1,6 @@
-import React from 'react'
-import { Login } from '../../services/Auth/AuthService';
 import { useLoginMutation } from '../../services/Auth/AuthHooks';
+import LogIn from '../../componets/Login/Login';
+import Auth from '../../componets/Login/Auth';
 
 const Home = () => {
   const loginMutation = useLoginMutation();
@@ -15,8 +15,10 @@ const Home = () => {
 
   return (
     <div>
-      <div>Welcome Home!</div>
-      <button onClick={handleLogin}>Login</button>
+      <LogIn />
+      <Auth />
+      {/* <div>Welcome Login!</div>
+      <button onClick={handleLogin}>Login</button> */}
     </div>
   )
 }

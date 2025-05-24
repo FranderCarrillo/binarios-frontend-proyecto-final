@@ -15,13 +15,13 @@ export const useLoginMutation = () => {
       return mutation;
 }
 
-// export const useLogoutMutation = () => {
+export const useLogoutMutation = () => {
 
-//     const mutation = useMutation({
-//         mutationFn: async () => {
-//           localStorage.removeItem('token');
-//         },
-//       })
+    const mutation = useMutation({
+        mutationFn: async () => {
+          localStorage.removeItem('token');
+        },
+      })
 
-//       return mutation;
-// }
+      return mutation;
+}

@@ -1,10 +1,11 @@
-import { useLoginMutation } from '../../services/Auth/AuthHooks';
+import { useLoginMutation, useLogoutMutation } from '../../services/Auth/AuthHooks';
 import { useGetAllSkill_ReactQuery } from '../../services/Skills/SkillHoks';
 
 const ListSkills = () => {
     const { skills, isPending, error } = useGetAllSkill_ReactQuery();
 
     const loginMutation = useLoginMutation();
+    const logoutMutation = useLogoutMutation();
 
     const handleLogin = () => {
       loginMutation.mutateAsync({
@@ -12,10 +13,11 @@ const ListSkills = () => {
           password: '1234'
         })
     .then(console.log);
-  }
+    }
 
     const handleLogOut = () => {
-      localStorage.removeItem('token');
+      logoutMutation.mutateAsync()
+      .then(console.log);
     }
 
   if(isPending)
@@ -31,7 +33,7 @@ const ListSkills = () => {
           <h2 key={skill.skillId}>{skill.name}</h2>
         ))}
       </div>
-      <button onClick={handleLogOut}>Login</button>
+      <button onClick={handleLogOut}>LogOut</button>
     </div>
   )
 }
