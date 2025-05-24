@@ -21,7 +21,6 @@ export default function Login() {
   return (
     <div className="">
       
-
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -32,13 +31,12 @@ export default function Login() {
         <form.Field name="email">
           {(field) => (
             <div>
-              <label htmlFor="email" className="">Correo electrónico</label>
+              <label htmlFor="email" >Correo electrónico</label>
               <input
                 id="email"
                 type="email"
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
-                className=""
               />
             </div>
           )}
@@ -48,23 +46,20 @@ export default function Login() {
         <form.Field name="password">
           {(field) => (
             <div>
-              <label htmlFor="password" className="">Contraseña</label>
+              <label htmlFor="password" >Contraseña</label>
               <input
                 id="password"
                 type="password"
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
-
               />
             </div>
           )}
         </form.Field>
 
-        
         <div>
           <button
             type="submit"
-    
           >
             Iniciar sesión
           </button>
