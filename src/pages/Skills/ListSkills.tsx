@@ -10,7 +10,8 @@ const ListSkills = () => {
     const handleLogin = () => {
       loginMutation.mutateAsync({
           email: 'jose@gmail.com',
-          password: '1234'
+          password: '1234',
+          role : 'CANDIDATE'
         })
     .then(console.log);
     }
