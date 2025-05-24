@@ -66,3 +66,104 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Contenedor general centrado */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /*min-height: 100vh;
+  padding: 20px;*/
+}
+
+/* Card estilo */
+.form-card {
+  background-color: #e4e0e0d8;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+  align-items: center;
+  border-radius: 8px;
+  padding: 60px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Título y línea azul */
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.form-underline {
+  width: 40px;
+  height: 4px;
+  background-color: #007bff;
+  margin: 0 auto 20px auto;
+  border-radius: 2px;
+}
+
+/* Campos del formulario */
+.form-body label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.form-body input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  color: #888;
+  background-color: #eaeaea;
+}
+
+/* Botón */
+.form-body button {
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.form-body button:hover {
+  background-color: #218838;
+}
+
+.form-body button:disabled {
+  background-color: #94d3a2;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.form-footer {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.form-footer a {
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+}
