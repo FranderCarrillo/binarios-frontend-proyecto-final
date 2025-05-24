@@ -5,5 +5,9 @@ export async function createCandidate(candidate: Candidate): Promise<Candidate>{
     const response = await apiAxios.post(`/Candidates`, candidate);
     return response.data;
 }
+export async function GetCandidate_By_Id(id:number): Promise<Candidate>{
+    const response = await apiAxios.get(`/Candidates ${id}`);
+    return response.data;
+}
 
 
