@@ -25,7 +25,7 @@ const NavbarLayout = () => {
         </div>
         <hr />
         <Outlet />
-     </>
+      </>
   )
 }
 
