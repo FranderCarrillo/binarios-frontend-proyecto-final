@@ -1,34 +1,18 @@
 // /src/router/private.tsx
-import { createRoute, Outlet, redirect, Link } from '@tanstack/react-router';
+import { createRoute, redirect } from '@tanstack/react-router';
 import { rootRoute } from './__root';
 import Dashboard from '../pages/dashboard';
 import ListSkills from '../pages/Skills/ListSkills';
 import ListOffers from '../pages/Offers/ListOffers';
+import NavbarLayout from '../components/Layouts/NavbarLayout';
 
 const appLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'app',
-  component: () => (
-    <>
-      <div className="p-2 flex gap-4 bg-white shadow items-center">
-        <Link to="/app/dashboard" className="[&.active]:font-bold text-blue-600">Dashboard</Link>
-        <Link to="/app/offers" className="[&.active]:font-bold text-blue-600">Offers</Link>
-        <Link to="/app/skills" className="[&.active]:font-bold text-blue-600">Skills</Link>
-        <Link
-          to="/auth/login"
-          onClick={() => localStorage.removeItem('token')}
-          className="ml-auto text-red-500"
-        >
-          Logout
-        </Link>
-      </div>
-      <hr />
-      <Outlet />
-    </>
-  ),
+  component: () => <NavbarLayout />,
   beforeLoad: () => {
     const token = localStorage.getItem('token');
-    if (!token) throw redirect({ to: '/auth/login' });
+    if (!token) throw redirect({ to: '/login' });
   },
 });
 

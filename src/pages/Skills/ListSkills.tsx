@@ -33,7 +33,7 @@ const ListSkills = () => {
           <h2 key={skill.skillId}>{skill.name}</h2>
         ))}
       </div>
-      <button onClick={handleLogOut}>LogOut</button>
+      {/* <button onClick={handleLogOut}>LogOut</button> */}
     </div>
   )
 }

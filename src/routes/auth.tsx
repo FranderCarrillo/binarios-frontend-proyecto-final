@@ -2,15 +2,14 @@
 import { createRoute, Outlet } from '@tanstack/react-router';
 import { rootRoute } from './__root';
 import Login from '../pages/Login';
-import ListSkills from '../pages/Skills/ListSkills';
 
 const authLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'auth',
+  path: '/',
   component: () => (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
       <h2 className="text-xl mb-4">Zona pública</h2>
-      <ListSkills />
+      {/* <ListSkills /> */}
       <Outlet />
     </div>
   ),

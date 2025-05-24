@@ -11,8 +11,6 @@ const routeTree = rootRoute.addChildren([
   ...privateRoutes,
 ]);
 
-
-
 const router = createRouter({ routeTree });
 const queryClient = new QueryClient();
 
