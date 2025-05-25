@@ -28,7 +28,16 @@ export default function Login() {
             form.handleSubmit();
           }}
         >
-          <form.Field name="email">
+          <form.Field name="email"
+          validators={{
+            onChange: ({ value }) => {
+              if (!value) return 'El correo es obligatorio';
+              if (!value.includes('@')) return 'Agregue @ a su direccion Email';
+              if (!value.includes('.')) return 'Correo no válido';
+            },
+          }}
+
+          >
             {(field) => (
               <div className="login-field">
                 <span className="login-field-icon">👤</span>

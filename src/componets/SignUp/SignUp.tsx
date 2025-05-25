@@ -33,6 +33,11 @@ const SignUp = () => {
             >
               <form.Field
                 name="name"
+                validators={{
+                  onChange: ({ value }) => {
+                    if (!value) return 'El nombre es obligatorio';
+                  },
+                }}
                 children={(field) => (
                   <>
                     <label htmlFor={field.name}>Nombre *</label>
@@ -49,6 +54,11 @@ const SignUp = () => {
 
               <form.Field
                 name="surname1"
+                validators={{
+                  onChange: ({ value }) => {
+                    if (!value) return 'El primer apellido es obligatorio';
+                  },
+                }}
                 children={(field) => (
                   <>
                     <label htmlFor={field.name}>Apellido *</label>
@@ -65,6 +75,11 @@ const SignUp = () => {
 
               <form.Field
                 name="surname2"
+                validators={{
+                  onChange: ({ value }) => {
+                    if (!value) return 'El segundo apellido es obligatorio';
+                  },
+                }}
                 children={(field) => (
                   <>
                     <label htmlFor={field.name}>Segundo Apellido</label>
@@ -81,6 +96,13 @@ const SignUp = () => {
 
               <form.Field
                 name="email"
+                validators={{
+                  onChange: ({ value }) => {
+                    if (!value) return 'El correo es obligatorio';
+                    if (!value.includes('@')) return 'Agregue @ a su direccion Email';
+                    if (!value.includes('.')) return 'Correo no válido';
+                  },
+                }}
                 children={(field) => (
                   <>
                     <label htmlFor={field.name}>Correo Electrónico *</label>
@@ -98,6 +120,11 @@ const SignUp = () => {
 
               <form.Field
                 name="password"
+                validators={{
+                  onChange: ({ value }) => {
+                    if (!value) return 'La contraseña es obligatoria';
+                  },
+                }}
                 children={(field) => (
                   <>
                     <label htmlFor={field.name}>Contraseña *</label>
