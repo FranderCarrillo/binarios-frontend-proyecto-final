@@ -1,6 +1,6 @@
 import { useLoginMutation } from '../../services/Auth/AuthHooks';
-import LogIn from '../../componets/Login/Login';
-import Auth from '../../componets/Login/Auth';
+import LogIn from '../../components/Login/Login';
+import Auth from '../../components/Login/Auth';
 
 const Home = () => {
   const loginMutation = useLoginMutation();

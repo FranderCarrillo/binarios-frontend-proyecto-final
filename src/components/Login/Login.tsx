@@ -1,6 +1,6 @@
 import { useForm } from '@tanstack/react-form';
-import { useLoginMutation } from '../services/Auth/AuthHooks';
-import { AuthInitialState } from '../models/Auth/Auth';
+import { useLoginMutation } from '../../services/Auth/AuthHooks';
+import { AuthInitialState } from '../../models/Auth/Auth';
 import { useNavigate } from '@tanstack/react-router';
 import './Login.css';
 

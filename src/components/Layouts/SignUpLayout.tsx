@@ -1,7 +1,7 @@
 // /src/router/auth.tsx
 import { createRoute, Outlet } from '@tanstack/react-router';
-import { rootRoute } from '../routes/__root';
-import SignUp from '../componets/SignUp/SignUp';
+import { rootRoute } from '../../routes/__root';
+import SignUp from '../SignUp/SignUp';
 
 
 const SignUptRoute = createRoute({

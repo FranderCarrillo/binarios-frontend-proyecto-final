@@ -1,9 +1,8 @@
-
 import { useQueryClient } from "@tanstack/react-query";
-import { useLoggedInCandidate } from "../services/Auth/AuthHooks";
-import {  useGetCandidateById } from "../services/Candidate/CandidateHooks";
-import { useCreateCandidateSkillMutation } from "../services/CandidateService/CandidateSkillHooks";
-import { useGetAllSkill_ReactQuery } from "../services/Skills/SkillHoks";
+import { useGetCandidateById } from "../../services/Candidate/CandidateHooks";
+import { useCreateCandidateSkillMutation } from "../../services/CandidateService/CandidateSkillHooks";
+import { useGetAllSkill_ReactQuery } from "../../services/Skills/SkillHoks";
+
 
 
 const Dashboard = () => {

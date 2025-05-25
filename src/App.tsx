@@ -2,9 +2,9 @@
 import { RouterProvider, createRouter } from '@tanstack/react-router';
 import { rootRoute } from './routes/__root';
 import { privateRoutes } from './routes/private';
-import { authRoutes } from './routes/auth';
+import { authRoutes } from './components/Layouts/auth';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { guestRoute } from './pages/SignUp';
+import { guestRoute } from './components/Layouts/SignUpLayout';
 
 
 

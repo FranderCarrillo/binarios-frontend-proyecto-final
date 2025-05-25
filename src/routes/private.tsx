@@ -4,7 +4,7 @@ import { rootRoute } from './__root';
 import ListSkills from '../pages/Skills/ListSkills';
 import ListOffers from '../pages/Offers/ListOffers';
 import NavbarLayout from '../components/Layouts/NavbarLayout';
-import Dashboard from '../pages/dashboard';
+import Dashboard from '../pages/Dashboard/Dashboard';
 
 const appLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,

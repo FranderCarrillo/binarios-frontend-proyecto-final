@@ -1,7 +1,7 @@
 // /src/router/auth.tsx
 import { createRoute, Outlet } from '@tanstack/react-router';
-import { rootRoute } from './__root';
-import Login from '../pages/Login';
+import { rootRoute } from '../../routes/__root';
+import Login from '../Login/Login';
 
 const authLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -13,11 +13,5 @@ const authLayoutRoute = createRoute({
     </div>
   ),
 });
-
-// const logoutRoute = createRoute({
-//   getParentRoute: () => authLayoutRoute,
-//   path: 'logout',
-//   component: Logout,
-// });
 
 export const authRoutes = [authLayoutRoute];
