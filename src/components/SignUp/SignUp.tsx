@@ -2,6 +2,7 @@ import { useForm } from "@tanstack/react-form";
 import { useNavigate } from "@tanstack/react-router";
 import { useCreateCandidateMutation } from "../../services/Candidate/CandidateHooks";
 import { CandidateInitialState } from "../../models/Candidate/Candidate";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const createCandidateMutation = useCreateCandidateMutation();
@@ -9,14 +10,33 @@ const SignUp = () => {
   const navigate = useNavigate();
 
     const form = useForm({
-        defaultValues: CandidateInitialState,
-        onSubmit: async ({ value }) => {
-          // Do something with form data
-          console.log(value)
-          createCandidateMutation.mutateAsync(value);
-          navigate({ to: '/' });
-        },
-      })
+    defaultValues: CandidateInitialState,
+    onSubmit: async ({ value }) => {
+      try {
+        await createCandidateMutation.mutateAsync(value);
+        toast.success('¡Registro exitoso!', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        navigate({ to: '/' });
+      } catch (error) {
+        toast.error('Ocurrió un error al registrar. Por favor, intenta de nuevo.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    },
+  }); 
 
       return (
         <div className="form-container">
