@@ -65,11 +65,11 @@ const Dashboard = () => {
           <button
             key={skill.skillId}
             onClick={() => handleToggleSkill(skill.skillId)}
-            className={
+            className={`skill-button ${
               candidate?.candidateSkills?.some(s => s.skillId === skill.skillId)
-                ? "active"
+                ? "selected-skill"
                 : ""
-            }
+            }`}
             disabled={addSkillMutation.isPending || removeSkillMutation.isPending}
           >
             {skill.name}
