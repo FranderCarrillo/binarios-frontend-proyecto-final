@@ -1,3 +1,5 @@
+import type { CandidateSkill } from "../CandidateSkill/CandidateSkill"
+
 export interface Candidate {
     id?:number,
     name: string,
@@ -5,6 +7,7 @@ export interface Candidate {
     surname2: string,
     email: string,
     password: string
+    candidateSkills?: CandidateSkill[]
 }
 
 export const CandidateInitialState = {

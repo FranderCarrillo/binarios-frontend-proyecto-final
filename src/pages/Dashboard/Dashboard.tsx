@@ -1,6 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useGetCandidateById } from "../../services/Candidate/CandidateHooks";
-import { useCreateCandidateSkillMutation } from "../../services/CandidateService/CandidateSkillHooks";
+import { useCreateCandidateSkillMutation, useDeleteCandidateSkillMutation } from "../../services/CandidateService/CandidateSkillHooks";
 import { useGetAllSkill_ReactQuery } from "../../services/Skills/SkillHoks";
 import { useLogoutMutation } from "../../services/Auth/AuthHooks";
 import { useNavigate } from "@tanstack/react-router";
@@ -18,20 +18,30 @@ const Dashboard = () => {
 
     const { skills, isPending, error } = useGetAllSkill_ReactQuery();
 
-    //const removeSkillMutation = useAddCandidateSkill();
+    const removeSkillMutation = useDeleteCandidateSkillMutation();
 
     const addSkillMutation = useCreateCandidateSkillMutation();
 
 
-    const handleToAddSkill = (skillId: number) => {
-      //const isSelected = skills?.some(s => s.skillId === skillId);
-      addSkillMutation.mutateAsync({
-        candidateId : Number(candidateID),
-        skillId: skillId
-      })
+    const handleToggleSkill = (skillId: number) => {
+      if (!candidate) return;
 
-    queryClient.invalidateQueries({ queryKey: ['candidate', Number(candidateID)] });
+      const hasSkill = candidate.candidateSkills?.some(
+        (s) => s.skillId === skillId
+      );
+
+      const mutation = hasSkill
+        ? removeSkillMutation.mutateAsync
+        : addSkillMutation.mutateAsync;
+
+      mutation({
+        candidateId: Number(candidateID),
+        skillId: skillId,
+      }).then(() => {
+        queryClient.invalidateQueries({ queryKey: ['candidate', Number(candidateID)] });
+      });
     };
+
 
     const logoutMutation = useLogoutMutation();
     
@@ -43,7 +53,8 @@ const Dashboard = () => {
   return (
   <div className="MyProfile">
     <section className="info-candidate">
-      <h1>Bienvenido, {candidate?.email}</h1>
+      <h1>Bienvenido, {candidate?.name}</h1>
+      <h2>{candidate?.surname1}</h2>
       <p>Correo: {candidate?.email}</p>
     </section>
 
@@ -53,9 +64,13 @@ const Dashboard = () => {
         {skills?.map((skill) => (
           <button
             key={skill.skillId}
-            onClick={() => handleToAddSkill(skill.skillId)}
-            // className={skills.some(s => s.skillId === skill.skillId) ? "active" : ""}
-            // disabled={addSkillMutation.isPending || removeSkillMutation.isPending}
+            onClick={() => handleToggleSkill(skill.skillId)}
+            className={
+              candidate?.candidateSkills?.some(s => s.skillId === skill.skillId)
+                ? "active"
+                : ""
+            }
+            disabled={addSkillMutation.isPending || removeSkillMutation.isPending}
           >
             {skill.name}
           </button>

@@ -11,8 +11,8 @@ export async function  addCandidateSkill(candidateSkill: CandidateSkill): Promis
 }
 
 // services/CandidateSkillService.ts
-export async function deleteSkillByCandidate(id: number): Promise<Skill> {
-    const response = await apiAxios.delete(`/CandidateSkills/${id}`);
+export async function deleteCandidateSkill(candidateSkill: CandidateSkill) {
+    const response = await apiAxios.delete(`/CandidateSkills`, { data: candidateSkill });
     return response.data;
 }
 
