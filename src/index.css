@@ -123,7 +123,7 @@ button:focus-visible {
 }
 
 .form-body input {
-  width: 100%;
+  /*width: 100%;*/
   padding: 12px;
   border: none;
   border-radius: 4px;
@@ -133,7 +133,7 @@ button:focus-visible {
 }
 
 /* Botón */
-.form-body button {
+/*.form-body button {
   width: 100%;
   background-color: #28a745;
   color: white;
@@ -153,7 +153,7 @@ button:focus-visible {
 .form-body button:disabled {
   background-color: #94d3a2;
   cursor: not-allowed;
-}
+}*/
 
 /* Footer */
 .form-footer {
@@ -166,4 +166,33 @@ button:focus-visible {
   font-weight: bold;
   color: #000;
   text-decoration: none;
+}
+
+/*Botón Registro*/
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.register-button{
+  width: 60%;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.register-button:hover {
+  background-color: #218838;
+}
+
+.register-button:disabled {
+  background-color: #94d3a2;
+  cursor: not-allowed;
 }

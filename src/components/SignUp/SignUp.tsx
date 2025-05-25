@@ -50,8 +50,9 @@ const SignUp = () => {
                 e.stopPropagation();
                 form.handleSubmit();
               }}
-              className="form-body"
+              /*className="form-body"*/
             >
+              <div className="form-body">
               <form.Field
                 name="name"
                 validators={{
@@ -160,15 +161,17 @@ const SignUp = () => {
                   </>
                 )}
               />
-
+              </div>
+              <div className="register-wrapper">
               <form.Subscribe
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
                 children={([canSubmit, isSubmitting]) => (
-                  <button type="submit" disabled={!canSubmit} >
+                  <button type="submit" disabled={!canSubmit}className="register-button">
                     {isSubmitting ? '...' : 'Registrarse'}
                   </button>
                 )}
               />
+              </div>
             </form>
 
             <p className="form-footer">
