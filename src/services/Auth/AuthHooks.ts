@@ -2,21 +2,21 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { Login } from "./AuthService";
 import { getLoggedInCandidate, type LoggedInUser } from "../../utils/auth";
 
-
 export const useLoginMutation = () => {
     const mutation = useMutation({
         mutationFn: Login,
         onSuccess: (res) => {
           // Invalidate and refetch
-          localStorage.setItem('token', res);
-          console.log(res);
+          console.log(res.token);
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('ID', res.candidateId.toString() );
+          
         },
       })
       return mutation;
 }
 
 export const useLogoutMutation = () => {
-
     const mutation = useMutation({
         mutationFn: async () => {
           localStorage.removeItem('token');

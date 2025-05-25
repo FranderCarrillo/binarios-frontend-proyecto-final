@@ -1,4 +1,5 @@
 export interface Candidate {
+    id?:number,
     name: string,
     surname1: string,
     surname2: string,
@@ -7,6 +8,7 @@ export interface Candidate {
 }
 
 export const CandidateInitialState = {
+    id:0,
     name: '',
     surname1: '',
     surname2: '',
