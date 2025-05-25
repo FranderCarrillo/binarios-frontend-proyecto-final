@@ -8,30 +8,30 @@ import { useNavigate } from "@tanstack/react-router";
 
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-  
-  const queryClient = useQueryClient();
+    const navigate = useNavigate();
+    
+    const queryClient = useQueryClient();
 
-  const candidateID = localStorage.getItem('ID');
-  
-  const { candidate } = useGetCandidateById(Number(candidateID));
+    const candidateID = localStorage.getItem('ID');
+    
+    const { candidate } = useGetCandidateById(Number(candidateID));
 
-  const { skills, isPending, error } = useGetAllSkill_ReactQuery();
+    const { skills, isPending, error } = useGetAllSkill_ReactQuery();
 
-  //const removeSkillMutation = useAddCandidateSkill();
+    //const removeSkillMutation = useAddCandidateSkill();
 
-  const addSkillMutation = useCreateCandidateSkillMutation();
+    const addSkillMutation = useCreateCandidateSkillMutation();
 
 
-  const handleToAddSkill = (skillId: number) => {
-    //const isSelected = skills?.some(s => s.skillId === skillId);
-    addSkillMutation.mutateAsync({
-      candidateId : Number(candidateID),
-      skillId: skillId
-    })
+    const handleToAddSkill = (skillId: number) => {
+      //const isSelected = skills?.some(s => s.skillId === skillId);
+      addSkillMutation.mutateAsync({
+        candidateId : Number(candidateID),
+        skillId: skillId
+      })
 
-   queryClient.invalidateQueries({ queryKey: ['candidate', Number(candidateID)] });
-  };
+    queryClient.invalidateQueries({ queryKey: ['candidate', Number(candidateID)] });
+    };
 
     const logoutMutation = useLogoutMutation();
     
@@ -40,31 +40,30 @@ const Dashboard = () => {
       .then(() => navigate({ to: '/' }));
     }
 
-    return (
-    <div className="MyProfile">
-      <section className="info-candidate">
-        <h1>Bienvenido, {candidate?.email}</h1>
-        <p>Correo: {candidate?.email}</p>
-      </section>
+  return (
+  <div className="MyProfile">
+    <section className="info-candidate">
+      <h1>Bienvenido, {candidate?.email}</h1>
+      <p>Correo: {candidate?.email}</p>
+    </section>
 
-      <section className="skills-candidate">
-        <h2>Skills</h2>
-        <div className="buttons-skills">
-          {skills?.map((skill) => (
-            <button
-              key={skill.skillId}
-              onClick={() => handleToAddSkill(skill.skillId)}
-              // className={skills.some(s => s.skillId === skill.skillId) ? "active" : ""}
-              // disabled={addSkillMutation.isPending || removeSkillMutation.isPending}
-            >
-              {skill.name}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      <button onClick={handleLogOut}>Logout</button>
-    </div>
+    <section className="skills-candidate">
+      <h2>Skills</h2>
+      <div className="buttons-skills">
+        {skills?.map((skill) => (
+          <button
+            key={skill.skillId}
+            onClick={() => handleToAddSkill(skill.skillId)}
+            // className={skills.some(s => s.skillId === skill.skillId) ? "active" : ""}
+            // disabled={addSkillMutation.isPending || removeSkillMutation.isPending}
+          >
+            {skill.name}
+          </button>
+        ))}
+      </div>
+    </section>
+    <button onClick={handleLogOut}>Logout</button>
+  </div>
   );
 
 };
