@@ -14,6 +14,7 @@ const SignUp = () => {
           // Do something with form data
           console.log(value)
           createCandidateMutation.mutateAsync(value);
+          navigate({ to: '/' });
         },
       })
 
@@ -143,7 +144,7 @@ const SignUp = () => {
               <form.Subscribe
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
                 children={([canSubmit, isSubmitting]) => (
-                  <button type="submit" disabled={!canSubmit}>
+                  <button type="submit" disabled={!canSubmit} >
                     {isSubmitting ? '...' : 'Registrarse'}
                   </button>
                 )}
