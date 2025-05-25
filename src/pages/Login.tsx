@@ -28,30 +28,38 @@ export default function Login() {
             form.handleSubmit();
           }}
         >
-          <form.Field name="email"
-          validators={{
-            onChange: ({ value }) => {
-              if (!value) return 'El correo es obligatorio';
-              if (!value.includes('@')) return 'Agregue @ a su direccion Email';
-              if (!value.includes('.')) return 'Correo no válido';
-            },
-          }}
-
-          >
+          <form.Field
+            name="email"
+            validators={{
+              onChange: ({ value }) => {
+                if (!value) return 'El correo es obligatorio';
+                if (!value.includes('@')) return 'Agregue @ a su dirección Email';
+                if (!value.includes('.')) return 'Correo no válido';
+              },
+            }}
+            >
             {(field) => (
-              <div className="login-field">
-                <span className="login-field-icon">👤</span>
-                <input
-                  id="email"
-                  className="login-input"
-                  type="email"
-                  value={field.state.value}
-                  onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="enter your username"
-                />
-              </div>
+              <>
+                <div className="login-field">
+                  <span className="login-field-icon">👤</span>
+                  <input
+                    id="email"
+                    className="login-input"
+                    type="email"
+                    value={field.state.value}
+                    onChange={(e) => field.handleChange(e.target.value)}
+                    placeholder="Enter your username"
+                  />
+                </div>
+
+                {/* Aquí va el error, afuera del div */}
+                {field.state.meta.errors?.length > 0 && (
+                  <span className="error-message">{field.state.meta.errors[0]}</span>
+                )}
+              </>
             )}
           </form.Field>
+
 
           <form.Field
             name="password"
@@ -65,20 +73,24 @@ export default function Login() {
             }}
           >
             {(field) => (
-              <div className="login-field">
-                <span className="login-field-icon">🔒</span>
-                <input
-                  id="password"
-                  className="login-input"
-                  type="password"
-                  value={field.state.value}
-                  onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="Enter your password"
-                />
+              <>
+                <div className="login-field">
+                  <span className="login-field-icon">🔒</span>
+                  <input
+                    id="password"
+                    className="login-input"
+                    type="password"
+                    value={field.state.value}
+                    onChange={(e) => field.handleChange(e.target.value)}
+                    placeholder="Enter your password"
+                  />
+                </div>
+
+                {/* Error fuera del contenedor */}
                 {field.state.meta.errors?.length > 0 && (
                   <span className="error-message">{field.state.meta.errors[0]}</span>
                 )}
-              </div>
+              </>
             )}
           </form.Field>
 
