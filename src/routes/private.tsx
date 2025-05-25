@@ -1,7 +1,6 @@
 // /src/router/private.tsx
 import { createRoute, redirect } from '@tanstack/react-router';
 import { rootRoute } from './__root';
-import ListSkills from '../pages/Skills/ListSkills';
 import ListOffers from '../pages/Offers/ListOffers';
 import NavbarLayout from '../components/Layouts/NavbarLayout';
 import Dashboard from '../pages/Dashboard/Dashboard';
@@ -28,19 +27,11 @@ const offersRoute = createRoute({
   component: () => <ListOffers />,
 });
 
-const skillsRoute = createRoute({
-  getParentRoute: () => appLayoutRoute,
-  path: 'skills',
-  component: () => <ListSkills />,
-});
-
-
 
 export const privateRoutes = [
   appLayoutRoute,
   dashboardRoute,
-  offersRoute,   
-  skillsRoute,    
+  offersRoute,    
 ];
 
 

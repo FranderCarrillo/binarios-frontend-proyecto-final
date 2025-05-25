@@ -3,6 +3,7 @@ import { useLoginMutation } from '../../services/Auth/AuthHooks';
 import { AuthInitialState } from '../../models/Auth/Auth';
 import { useNavigate } from '@tanstack/react-router';
 import './Login.css';
+import { toast } from 'react-toastify';
 
 export default function Login() {
   const loginMutation = useLoginMutation();
@@ -11,8 +12,30 @@ export default function Login() {
   const form = useForm({
     defaultValues: AuthInitialState,
     onSubmit: async ({ value }) => {
-      await loginMutation.mutateAsync(value);
-      navigate({ to: '/app/dashboard' });
+      try {
+        await loginMutation.mutateAsync(value);
+        toast.success('Acceso exitoso!', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+                progress: undefined,
+        });
+        navigate({ to: '/app/dashboard' });
+      } catch (error) {
+        toast.error('Ocurrió un error al ingresar. Por favor, intenta de nuevo.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+      
     },
   });
 

@@ -2,11 +2,14 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useGetCandidateById } from "../../services/Candidate/CandidateHooks";
 import { useCreateCandidateSkillMutation } from "../../services/CandidateService/CandidateSkillHooks";
 import { useGetAllSkill_ReactQuery } from "../../services/Skills/SkillHoks";
+import { useLogoutMutation } from "../../services/Auth/AuthHooks";
+import { useNavigate } from "@tanstack/react-router";
 
 
 
 const Dashboard = () => {
-  //const { data: user } = useLoggedInCandidate();
+  const navigate = useNavigate();
+  
   const queryClient = useQueryClient();
 
   const candidateID = localStorage.getItem('ID');
@@ -30,6 +33,13 @@ const Dashboard = () => {
    queryClient.invalidateQueries({ queryKey: ['candidate', Number(candidateID)] });
   };
 
+    const logoutMutation = useLogoutMutation();
+    
+    const handleLogOut = () => {
+      logoutMutation.mutateAsync()
+      .then(() => navigate({ to: '/' }));
+    }
+
     return (
     <div className="MyProfile">
       <section className="info-candidate">
@@ -52,6 +62,8 @@ const Dashboard = () => {
           ))}
         </div>
       </section>
+
+      <button onClick={handleLogOut}>Logout</button>
     </div>
   );
 
