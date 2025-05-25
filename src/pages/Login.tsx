@@ -53,7 +53,17 @@ export default function Login() {
             )}
           </form.Field>
 
-          <form.Field name="password">
+          <form.Field
+            name="password"
+            validators={{
+              onChange: ({ value }) => {
+                if (!value || value.trim() === '') {
+                  return 'La contraseña es obligatoria';
+                }
+                return undefined;
+              },
+            }}
+          >
             {(field) => (
               <div className="login-field">
                 <span className="login-field-icon">🔒</span>
@@ -63,11 +73,15 @@ export default function Login() {
                   type="password"
                   value={field.state.value}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="enter your password"
+                  placeholder="Enter your password"
                 />
+                {field.state.meta.errors?.length > 0 && (
+                  <span className="error-message">{field.state.meta.errors[0]}</span>
+                )}
               </div>
             )}
           </form.Field>
+
 
           <form.Subscribe selector={(state) => [state.canSubmit, state.isSubmitting]}>
             {([canSubmit, isSubmitting]) => (

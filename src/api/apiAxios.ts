@@ -1,4 +1,5 @@
-import axios, { type AxiosInstance } from "axios";
+import axios from "axios";
+
 
 
 const apiAxios = axios.create({
