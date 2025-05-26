@@ -80,23 +80,25 @@ button:focus-visible {
   justify-content: center;
   align-items: center;
   
-  /*min-height: 100vh;
-  padding: 20px;*/
+  min-height: 100vh;
+  padding: 20px;
 }
 
 /* Card estilo */
 .form-card {
-  background-color: #e4e0e0d8;
   color: #000;
   display: flex;
   flex-direction: column;
   /*justify-content: center;*/
+  background-color: #d9d9d9;
+  border: 3px solid #2196f3;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   align-items: center;
-  border-radius: 8px;
-  padding: 60px;
-  max-width: 400px;
+  padding:20px;
+  max-width: 300px;
   width: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Título y línea azul */
@@ -114,7 +116,11 @@ button:focus-visible {
   margin: 0 auto 20px auto;
   border-radius: 2px;
 }
-
+.form-body{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 /* Campos del formulario */
 .form-body label {
   display: block;
@@ -123,11 +129,11 @@ button:focus-visible {
 }
 
 .form-body input {
-  /*width: 100%;*/
+  width: 250px;
+  max-width: 100%;
   padding: 12px;
   border: none;
   border-radius: 4px;
-  margin-bottom: 10px;
   color: #888;
   background-color: #eaeaea;
 }
