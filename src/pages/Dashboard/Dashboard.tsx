@@ -1,9 +1,9 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useGetCandidateById } from "../../services/Candidate/CandidateHooks";
-import { useCreateCandidateSkillMutation, useDeleteCandidateSkillMutation } from "../../services/CandidateService/CandidateSkillHooks";
 import { useGetAllSkill_ReactQuery } from "../../services/Skills/SkillHoks";
 import { useLogoutMutation } from "../../services/Auth/AuthHooks";
 import { useNavigate } from "@tanstack/react-router";
+import { useCreateCandidateSkillMutation, useDeleteCandidateSkillMutation } from "../../services/CandidateSkill/CandidateSkillHooks";
 
 
 

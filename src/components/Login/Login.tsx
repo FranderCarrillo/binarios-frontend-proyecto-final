@@ -4,40 +4,28 @@ import { AuthInitialState } from '../../models/Auth/Auth';
 import { useNavigate } from '@tanstack/react-router';
 import './Login.css';
 import { toast } from 'react-toastify';
+import { handleApiError } from '../../utils/handleApiError';
 
 export default function Login() {
-  const loginMutation = useLoginMutation();
-  const navigate = useNavigate();
+const loginMutation = useLoginMutation();
+const navigate = useNavigate();
 
-  const form = useForm({
-    defaultValues: AuthInitialState,
-    onSubmit: async ({ value }) => {
-      try {
-        await loginMutation.mutateAsync(value);
-        toast.success('Acceso exitoso!', {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-                progress: undefined,
-        });
-        navigate({ to: '/app/dashboard' });
-      } catch (error) {
-        toast.error('Ocurrió un error al ingresar. Por favor, intenta de nuevo.', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-      
-    },
-  });
+const form = useForm({
+  defaultValues: AuthInitialState,
+  onSubmit: async ({ value }) => {
+    try {
+      await loginMutation.mutateAsync(value);
+      toast.success('¡Acceso exitoso!', {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      navigate({ to: '/app/dashboard' });
+    } catch (error: any) {
+      handleApiError(error, 'Error al ingresar. Por favor, intenta de nuevo.');
+    }
+  }
+});
+
 
   return (
     <div className="login-wrapper">

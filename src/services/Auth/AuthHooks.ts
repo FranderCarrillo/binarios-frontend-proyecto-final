@@ -12,7 +12,14 @@ export const useLoginMutation = () => {
           localStorage.setItem('ID', res.candidateId.toString() );
           
         },
-      })
+        onError: (error: any) => {
+          if (error?.response?.status === 401) {
+            console.log ('credenciales incorrectas');
+          }else{
+            console.log ('error descocido');
+          }
+        },
+      });
       return mutation;
 }
 
