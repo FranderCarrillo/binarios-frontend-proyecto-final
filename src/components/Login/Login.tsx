@@ -5,6 +5,8 @@ import { useNavigate } from '@tanstack/react-router';
 import './Login.css';
 import { toast } from 'react-toastify';
 import { handleApiError } from '../../utils/handleApiError';
+import { zodValidator } from '@tanstack/zod-form-adapter';
+import { loginSchema } from '../../schemas/authSchema';
 
 export default function Login() {
 const loginMutation = useLoginMutation();
@@ -15,16 +17,16 @@ const form = useForm({
   onSubmit: async ({ value }) => {
     try {
       await loginMutation.mutateAsync(value);
-      toast.success('¡Acceso exitoso!', {
-        position: "top-right",
-        autoClose: 3000,
-      });
+      toast.success('¡Acceso exitoso!', { position: "top-right", autoClose: 3000 });
       navigate({ to: '/app/dashboard' });
     } catch (error: any) {
       handleApiError(error, 'Error al ingresar. Por favor, intenta de nuevo.');
     }
-  }
+  },
+  // validatorAdapter: zodValidator,
+  // validator: loginSchema,
 });
+
 
 
 return (  
@@ -39,6 +41,7 @@ return (
         form.handleSubmit();
       }}
     >
+      
       <form.Field
         name="email"
         validators={{
@@ -63,7 +66,7 @@ return (
               />
             </div>
 
-            {/* Aquí va el error, afuera del div */}
+            
             {field.state.meta.errors?.length > 0 && (
               <span className="error-message">{field.state.meta.errors[0]}</span>
             )}
@@ -96,14 +99,13 @@ return (
               />
             </div>
 
-            {/* Error fuera del contenedor */}
+            
             {field.state.meta.errors?.length > 0 && (
               <span className="error-message">{field.state.meta.errors[0]}</span>
             )}
           </>
         )}
       </form.Field>
-
 
       <form.Subscribe selector={(state) => [state.canSubmit, state.isSubmitting]}>
         {([canSubmit, isSubmitting]) => (
