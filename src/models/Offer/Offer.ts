@@ -8,6 +8,6 @@ export interface Offer {
 
   // Relaciones (opcionalmente presentes)
   company?: Company;                        
-//   offerSkills?: OfferSkill[];
+  offerSkills?: OfferSkill[];
 //   candidateOffers?: CandidateOffer[];
 }
