@@ -27,7 +27,8 @@ const form = useForm({
 
 
 return (  
-<div className="login-wrapper">
+<div className="h-screen bg-black flex justify-center items-center">
+
   <div className="login-container">
     <div className="login-title">Inicio Sesión</div>
     <div className="login-title-underline"></div>
