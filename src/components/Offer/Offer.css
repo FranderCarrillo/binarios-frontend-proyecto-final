@@ -1,0 +1,40 @@
+.offer-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+}
+
+.company-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.label {
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.value {
+  margin-top: 2px;
+}
+
+.skills-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.skill-badge {
+  background-color: #e0e0e0;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: 1px solid #888;
+}
