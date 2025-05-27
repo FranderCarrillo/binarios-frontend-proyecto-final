@@ -5,8 +5,7 @@ import { useNavigate } from '@tanstack/react-router';
 import './Login.css';
 import { toast } from 'react-toastify';
 import { handleApiError } from '../../utils/handleApiError';
-import { zodValidator } from '@tanstack/zod-form-adapter';
-import { loginSchema } from '../../schemas/authSchema';
+
 
 export default function Login() {
 const loginMutation = useLoginMutation();
