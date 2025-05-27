@@ -1,4 +1,5 @@
 import type { Company } from "../Company/Company";
+import type { OfferSkill } from "../OfferSkill/OfferSkill";
 
 export interface Offer {
   offerId: number;          // ID interno de la oferta

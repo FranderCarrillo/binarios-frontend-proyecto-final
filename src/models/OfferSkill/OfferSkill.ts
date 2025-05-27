@@ -1,3 +1,5 @@
+import type { Offer } from "../Offer/Offer"
+import type { Skill } from "../Skill/Skill"
 export interface OfferSkill {
   id: number,
   offerId: number,
