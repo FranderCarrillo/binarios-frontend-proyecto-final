@@ -22,8 +22,6 @@ const form = useForm({
       handleApiError(error, 'Error al ingresar. Por favor, intenta de nuevo.');
     }
   },
-  // validatorAdapter: zodValidator,
-  // validator: loginSchema,
 });
 
 
