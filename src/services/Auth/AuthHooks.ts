@@ -27,6 +27,7 @@ export const useLogoutMutation = () => {
     const mutation = useMutation({
         mutationFn: async () => {
           localStorage.removeItem('token');
+          localStorage.removeItem('ID');
         },
       })
       return mutation;

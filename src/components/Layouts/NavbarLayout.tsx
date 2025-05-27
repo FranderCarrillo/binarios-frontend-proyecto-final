@@ -1,25 +1,38 @@
-import { Link, Outlet } from '@tanstack/react-router'
+import { Link, Outlet } from '@tanstack/react-router';
 import { useGetCandidateById } from '../../services/Candidate/CandidateHooks';
-import './css/NavbarLayout.css'
 
 const NavbarLayout = () => {
-    const candidateID = localStorage.getItem('ID');
-      
-    const { candidate } = useGetCandidateById(Number(candidateID));
+  const candidateID = localStorage.getItem('ID');
+  const { candidate } = useGetCandidateById(Number(candidateID));
+
   return (
     <>
-      <nav className="navbar-layout">
-        <div className="navbar-links">
-          <Link to="/app/dashboard" className="nav-link">{candidate?.name}</Link>
-          <Link to="/app/offers" className="nav-link">Offers</Link>
+      <nav className="bg-[#16425B] text-white px-6 py-4 shadow-md flex items-center">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <div className="flex gap-6">
+            <Link
+              to="/app/dashboard"
+              className="font-medium hover:text-[#81C3D7] transition"
+            >
+              {candidate?.name || 'Perfil'}
+            </Link>
+            <Link
+              to="/app/offers"
+              className="font-medium hover:text-[#81C3D7] transition"
+            >
+              Offers
+            </Link>
+          </div>
         </div>
       </nav>
-      <main className="main-content">
-        <Outlet />
+
+      <main className="bg-[#D9DCD6] min-h-screen p-6">
+        <div className="max-w-6xl mx-auto">
+          <Outlet />
+        </div>
       </main>
     </>
+  );
+};
 
-  )
-}
-
-export default NavbarLayout
+export default NavbarLayout;
