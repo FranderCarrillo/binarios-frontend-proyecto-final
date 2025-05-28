@@ -9,9 +9,9 @@ export const loginSchema = z.object({
 });
 
 export const RegisterSchema = z.object({
-  name: z.string().min(3, "Debe tener al menos 3 caracteres"),
-  firstLastName: z.string().min(3, "Debe tener al menos 3 caracteres"),
-  secondLastName: z.string().min(3, "Debe tener al menos 3 caracteres"),
+  name: z.string().min(1, "Debe tener al menos 1 caracter"),
+  surname1: z.string().min(3, "Debe tener al menos 3 caracteres"),
+  surname2: z.string().min(3, "Debe tener al menos 3 caracteres"),
   email: z.string().email("Correo no válido"),
   password: z.string().min(6, "Debe tener al menos 6 caracteres"),
 });

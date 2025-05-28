@@ -35,6 +35,7 @@ const Offers = () => {
   };
 
   const currentList = showPostulaciones ? offersCandidate : offers;
+  console.log('Offers', currentList);
 
   return (
     <div className="min-h-screen bg-[#D9DCD6] px-6 py-10">

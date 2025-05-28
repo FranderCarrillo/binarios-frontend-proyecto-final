@@ -25,7 +25,6 @@ const SignUp = () => {
         return;
       }
 
-
       try {
         await createCandidateMutation.mutateAsync(value);
         toast.success("¡Registro exitoso!", {
@@ -58,12 +57,12 @@ const SignUp = () => {
         >
           <form.Field
             name="name"
-            validators={{
-              onChange: ({ value }) => {
-                if (!value) return "El nombre es obligatorio";
-                setFormErrors((prev) => ({ ...prev, []: "" }));
-              },
-            }}
+            // validators={{
+            //   onChange: ({ value }) => {
+            //     if (!value) return "El nombre es obligatorio";
+            //     setFormErrors((prev) => ({ ...prev, [field.name]: "" }));
+            //   },
+            // }}
           >
             {(field) => (
               <>
@@ -75,27 +74,28 @@ const SignUp = () => {
                   name={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
-                  onChange={(e) => field.handleChange(e.target.value)}
+                  onChange={(e) => {field.handleChange(e.target.value);
+                    setFormErrors((prev) => ({ ...prev, [field.name]: "" }));
+                  }
+                  }
                   placeholder="Nombre"
                   className="w-full px-4 py-2 border border-[#2F6690] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#81C3D7] text-[#16425B]"
                 />
                 {formErrors[field.name] && (
                     <p style={{ color: "red", fontSize: "0.8rem" }}>{formErrors[field.name]}</p>
-                  )}
-                {field.state.meta.errors?.length > 0 && (
-                  <p className="text-red-600 text-xs mt-1">{field.state.meta.errors[0]}</p>
                 )}
+                
               </>
             )}
           </form.Field>
 
           <form.Field
             name="surname1"
-            validators={{
-              onChange: ({ value }) => {
-                if (!value) return "El primer apellido es obligatorio";
-              },
-            }}
+            // validators={{
+            //   onChange: ({ value }) => {
+            //     if (!value) return "El primer apellido es obligatorio";
+            //   },
+            // }}
           >
             {(field) => (
               <>
@@ -107,24 +107,29 @@ const SignUp = () => {
                   name={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
-                  onChange={(e) => field.handleChange(e.target.value)}
+                  onChange={(e) => {field.handleChange(e.target.value);
+                    setFormErrors((prev) => ({ ...prev, [field.name]: "" }));
+                  }}
                   placeholder="Primer Apellido"
                   className="w-full px-4 py-2 border border-[#2F6690] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#81C3D7] text-[#16425B]"
                 />
-                {field.state.meta.errors?.length > 0 && (
-                  <p className="text-red-600 text-xs mt-1">{field.state.meta.errors[0]}</p>
+                {formErrors[field.name] && (
+                    <p style={{ color: "red", fontSize: "0.8rem" }}>{formErrors[field.name]}</p>
                 )}
+                {/* {field.state.meta.errors?.length > 0 && (
+                  <p className="text-red-600 text-xs mt-1">{field.state.meta.errors[0]}</p>
+                )} */}
               </>
             )}
           </form.Field>
 
           <form.Field
             name="surname2"
-            validators={{
-              onChange: ({ value }) => {
-                if (!value) return "El segundo apellido es obligatorio";
-              },
-            }}
+            // validators={{
+            //   onChange: ({ value }) => {
+            //     if (!value) return "El segundo apellido es obligatorio";
+            //   },
+            // }}
           >
             {(field) => (
               <>
@@ -136,26 +141,31 @@ const SignUp = () => {
                   name={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
-                  onChange={(e) => field.handleChange(e.target.value)}
+                  onChange={(e) => {field.handleChange(e.target.value);
+                    setFormErrors((prev) => ({ ...prev, [field.name]: "" }));
+                  }}
                   placeholder="Segundo Apellido"
                   className="w-full px-4 py-2 border border-[#2F6690] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#81C3D7] text-[#16425B]"
                 />
-                {field.state.meta.errors?.length > 0 && (
-                  <p className="text-red-600 text-xs mt-1">{field.state.meta.errors[0]}</p>
+                {formErrors[field.name] && (
+                    <p style={{ color: "red", fontSize: "0.8rem" }}>{formErrors[field.name]}</p>
                 )}
+                {/* {field.state.meta.errors?.length > 0 && (
+                  <p className="text-red-600 text-xs mt-1">{field.state.meta.errors[0]}</p>
+                )} */}
               </>
             )}
           </form.Field>
 
           <form.Field
             name="email"
-            validators={{
-              onChange: ({ value }) => {
-                if (!value) return "El correo es obligatorio";
-                if (!value.includes("@")) return "Agregue @ a su dirección Email";
-                if (!value.includes(".")) return "Correo no válido";
-              },
-            }}
+            // validators={{
+            //   onChange: ({ value }) => {
+            //     if (!value) return "El correo es obligatorio";
+            //     if (!value.includes("@")) return "Agregue @ a su dirección Email";
+            //     if (!value.includes(".")) return "Correo no válido";
+            //   },
+            // }}
           >
             {(field) => (
               <>
@@ -168,24 +178,29 @@ const SignUp = () => {
                   type="email"
                   value={field.state.value}
                   onBlur={field.handleBlur}
-                  onChange={(e) => field.handleChange(e.target.value)}
+                  onChange={(e) => {field.handleChange(e.target.value);
+                    setFormErrors((prev) => ({ ...prev, [field.name]: "" }));
+                  }}
                   placeholder="Correo electrónico"
                   className="w-full px-4 py-2 border border-[#2F6690] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#81C3D7] text-[#16425B]"
                 />
-                {field.state.meta.errors?.length > 0 && (
-                  <p className="text-red-600 text-xs mt-1">{field.state.meta.errors[0]}</p>
+                {formErrors[field.name] && (
+                    <p style={{ color: "red", fontSize: "0.8rem" }}>{formErrors[field.name]}</p>
                 )}
+                {/* {field.state.meta.errors?.length > 0 && (
+                  <p className="text-red-600 text-xs mt-1">{field.state.meta.errors[0]}</p>
+                )} */}
               </>
             )}
           </form.Field>
 
           <form.Field
             name="password"
-            validators={{
-              onChange: ({ value }) => {
-                if (!value) return "La contraseña es obligatoria";
-              },
-            }}
+            // validators={{
+            //   onChange: ({ value }) => {
+            //     if (!value) return "La contraseña es obligatoria";
+            //   },
+            // }}
           >
             {(field) => (
               <>
@@ -198,13 +213,18 @@ const SignUp = () => {
                   type="password"
                   value={field.state.value}
                   onBlur={field.handleBlur}
-                  onChange={(e) => field.handleChange(e.target.value)}
+                  onChange={(e) => {field.handleChange(e.target.value);
+                    setFormErrors((prev) => ({ ...prev, [field.name]: "" }));
+                  }}
                   placeholder="Contraseña"
                   className="w-full px-4 py-2 border border-[#2F6690] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#81C3D7] text-[#16425B]"
                 />
-                {field.state.meta.errors?.length > 0 && (
-                  <p className="text-red-600 text-xs mt-1">{field.state.meta.errors[0]}</p>
+                {formErrors[field.name] && (
+                    <p style={{ color: "red", fontSize: "0.8rem" }}>{formErrors[field.name]}</p>
                 )}
+                {/* {field.state.meta.errors?.length > 0 && (
+                  <p className="text-red-600 text-xs mt-1">{field.state.meta.errors[0]}</p>
+                )} */}
               </>
             )}
           </form.Field>

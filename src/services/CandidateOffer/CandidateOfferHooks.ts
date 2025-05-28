@@ -2,7 +2,6 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { addCandidateOffer, getOffersByCandidate_ById } from "./CandidateOfferService";
 
 export const useCreateCandidateOfferMutation = () => {
-
     const queryClient = useQueryClient()
     
     const mutation = useMutation({
