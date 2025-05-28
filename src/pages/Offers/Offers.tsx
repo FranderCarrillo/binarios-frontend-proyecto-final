@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useGetCandidateById } from '../../services/Offers/OfferHooks';
 import type { Offer } from '../../models/Offer/Offer';
 import {
   useCreateCandidateOfferMutation,
   useGetOffersCandidateById,
 } from '../../services/CandidateOffer/CandidateOfferHooks';
+import OfferCardPostulations from '../../cards/Offer/OfferCardPostulations';
 import OfferCard from '../../cards/Offer/OfferCard';
+import { toast } from 'react-toastify';
+import { handleApiError } from '../../utils/handleApiError';
 
 const Offers = () => {
   const candidateID = localStorage.getItem('ID');
@@ -16,10 +19,16 @@ const Offers = () => {
   const [showPostulaciones, setShowPostulaciones] = useState(false);
 
   const handleToAddSkill = (offer: Offer) => {
-    addCandidateOffer.mutateAsync({
-      candidateId: Number(candidateID),
-      offerId: offer.offerId,
-    });
+    
+    try {
+        addCandidateOffer.mutateAsync({
+        candidateId: Number(candidateID),
+        offerId: offer.offerId,
+        });
+        toast.success('¡Postulacion exitosa, no nos llame!', { position: "top-right", autoClose: 3000 });
+    } catch (error: any) {
+        handleApiError(error, 'Nosotros lo llamamos!');
+    }
   };
 
   const toggleView = () => {
@@ -36,14 +45,20 @@ const Offers = () => {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {currentList?.map((offer) => (
-            <OfferCard 
-              key={offer.offerId}
-              offer={offer}
-              showPostulaciones={showPostulaciones}
-              handleToAddSkill={handleToAddSkill}
-            />
-          ))}
+          {currentList?.map((offer) =>
+            showPostulaciones ? (
+              <OfferCard
+                key={`offer-${offer.offerId}`}
+                offer={offer}
+              />
+            ) : (
+              <OfferCardPostulations 
+                key={`post-${offer.offerId}`}
+                offer={offer}
+                handleToAddSkill={handleToAddSkill}
+              />
+            )
+          )}
         </div>
 
         <div className="text-center mt-10">

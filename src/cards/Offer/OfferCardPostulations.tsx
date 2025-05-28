@@ -1,12 +1,12 @@
-import type { Offer } from "../../models/Offer/Offer"
+import type { Offer } from '../../models/Offer/Offer'
 
 type OfferProps = {
-    offer: Offer
+    offer: Offer,
+    handleToAddSkill: (offer: Offer) => void
 }
 
-
-const OfferCard = ({offer}: OfferProps) => {
-   return (
+const OfferCardPostulations = ({offer, handleToAddSkill}: OfferProps) => {
+  return (
      <div
         key={offer.offerId}
         className="bg-white rounded-xl shadow-md p-6 border border-[#81C3D7]">
@@ -26,8 +26,15 @@ const OfferCard = ({offer}: OfferProps) => {
                 ))}
             </ul>
         </div>
+
+            <button
+                onClick={() => handleToAddSkill(offer)}
+                className="mt-2 w-full bg-[#3A7CA5] hover:bg-[#2F6690] text-white py-2 px-4 rounded-md font-semibold transition"
+            >
+                Postularme
+            </button>
     </div>
   )
 }
 
-export default OfferCard
+export default OfferCardPostulations;

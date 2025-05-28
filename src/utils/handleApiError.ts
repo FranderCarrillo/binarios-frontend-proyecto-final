@@ -12,6 +12,9 @@ export function handleApiError(error: any, fallbackMessage = 'Ocurrió un error 
     case 403:
       toast.error('No tienes permisos para acceder.', defaultToastOptions);
       break;
+    case 409:
+      toast.error(message || 'No llame, nosotros lo llamamos', defaultToastOptions);
+      break;
     default:
       toast.error(message || fallbackMessage, defaultToastOptions);
   }
