@@ -203,7 +203,7 @@ const SignUp = () => {
           </form.Subscribe>
         </form>
 
-        <p className="text-center mt-6 text-sm">
+        <p className="text-center mt-6 text-sm text-[#16425B]">
           ¿Ya tenés una cuenta?{" "}
           <a
             onClick={() => navigate({ to: "/" })}

@@ -79,12 +79,12 @@ export default function Login() {
           >
             {(field) => (
               <div>
-                <label htmlFor="password" className="block text-[#16425B] font-medium mb-1">Contraseña</label>
+                <label htmlFor="password" className="block  font-medium mb-1 text-[#16425B]">Contraseña</label>
                 <div className="flex items-center border border-[#3A7CA5] rounded-lg overflow-hidden">
                   {/* <span className="bg-[#3A7CA5] text-white px-3 py-2">🔒</span> */}
                   <input
                     id="password"
-                    className="w-full p-2 outline-none"
+                    className="w-full p-2 outline-none text-[#16425B]"
                     type="password"
                     value={field.state.value}
                     onChange={(e) => field.handleChange(e.target.value)}
