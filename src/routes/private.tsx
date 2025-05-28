@@ -5,9 +5,9 @@ import NavbarLayout from '../components/Layouts/NavbarLayout';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import Offers from '../pages/Offers/Offers';
 
-const appLayoutRoute = createRoute({
+const userLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'app',
+  path: 'user',
   component: () => <NavbarLayout />,
   beforeLoad: () => {
     const token = localStorage.getItem('token');
@@ -16,20 +16,20 @@ const appLayoutRoute = createRoute({
 });
 
 const dashboardRoute = createRoute({
-  getParentRoute: () => appLayoutRoute,
+  getParentRoute: () => userLayoutRoute,
   path: 'dashboard',
   component:() => <Dashboard/>,
 });
 
 const offersRoute = createRoute({
-  getParentRoute: () => appLayoutRoute,
+  getParentRoute: () => userLayoutRoute,
   path: 'offers',
   component: () => <Offers/>,
 });
 
 
 export const privateRoutes = [
-  appLayoutRoute,
+  userLayoutRoute,
   dashboardRoute,
   offersRoute,    
 ];

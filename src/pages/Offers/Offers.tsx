@@ -18,10 +18,9 @@ const Offers = () => {
 
   const [showPostulaciones, setShowPostulaciones] = useState(false);
 
-  const handleToAddSkill = (offer: Offer) => {
-    
+  const handleToAddSkill = async (offer: Offer) => {
     try {
-        addCandidateOffer.mutateAsync({
+        await addCandidateOffer.mutateAsync({
         candidateId: Number(candidateID),
         offerId: offer.offerId,
         });

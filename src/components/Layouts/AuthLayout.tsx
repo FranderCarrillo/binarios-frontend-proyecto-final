@@ -7,7 +7,7 @@ const authLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
   component: () => (
-    <div style={{ display: 'flex', alignItems: 'center', height: '100vh', width: '100%'}}>
+    <div>
       <Login />
       <Outlet />
     </div>

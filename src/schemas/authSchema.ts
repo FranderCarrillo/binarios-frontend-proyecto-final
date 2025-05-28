@@ -8,4 +8,10 @@ export const loginSchema = z.object({
   password: z.string().min(1, 'La contraseña es obligatoria'),
 });
 
-export type LoginSchemaType = z.infer<typeof loginSchema>;
+export const RegisterSchema = z.object({
+  name: z.string().min(3, "Debe tener al menos 3 caracteres"),
+  firstLastName: z.string().min(3, "Debe tener al menos 3 caracteres"),
+  secondLastName: z.string().min(3, "Debe tener al menos 3 caracteres"),
+  email: z.string().email("Correo no válido"),
+  password: z.string().min(6, "Debe tener al menos 6 caracteres"),
+});

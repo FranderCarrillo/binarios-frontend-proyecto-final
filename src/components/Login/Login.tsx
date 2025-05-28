@@ -15,7 +15,7 @@ export default function Login() {
       try {
         await loginMutation.mutateAsync(value);
         toast.success('¡Acceso exitoso!', { position: "top-right", autoClose: 3000 });
-        navigate({ to: '/app/dashboard' });
+        navigate({ to: '/user/dashboard' });
       } catch (error: any) {
         handleApiError(error, 'Error al ingresar. Por favor, intenta de nuevo.');
       }

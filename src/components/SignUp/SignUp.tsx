@@ -3,14 +3,29 @@ import { useNavigate } from "@tanstack/react-router";
 import { useCreateCandidateMutation } from "../../services/Candidate/CandidateHooks";
 import { CandidateInitialState } from "../../models/Candidate/Candidate";
 import { toast } from "react-toastify";
+import { useState } from "react";
+import { RegisterSchema } from "../../schemas/authSchema";
 
 const SignUp = () => {
   const createCandidateMutation = useCreateCandidateMutation();
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const navigate = useNavigate();
 
   const form = useForm({
     defaultValues: CandidateInitialState,
     onSubmit: async ({ value }) => {
+      const validation = RegisterSchema.safeParse(value);
+      if (!validation.success) {
+        const errors: Record<string, string> = {};
+        validation.error.errors.forEach((err) => {
+          const field = err.path[0] as string;
+          errors[field] = err.message;
+        });
+        setFormErrors(errors);
+        return;
+      }
+
+
       try {
         await createCandidateMutation.mutateAsync(value);
         toast.success("¡Registro exitoso!", {
@@ -19,7 +34,7 @@ const SignUp = () => {
         });
         navigate({ to: "/" });
       } catch (error) {
-        toast.error("Ocurrió un error al registrar. Por favor, intenta de nuevo.", {
+        toast.error("Email ya registrado!", {
           position: "top-right",
           autoClose: 5000,
         });
@@ -46,6 +61,7 @@ const SignUp = () => {
             validators={{
               onChange: ({ value }) => {
                 if (!value) return "El nombre es obligatorio";
+                setFormErrors((prev) => ({ ...prev, []: "" }));
               },
             }}
           >
@@ -63,6 +79,9 @@ const SignUp = () => {
                   placeholder="Nombre"
                   className="w-full px-4 py-2 border border-[#2F6690] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#81C3D7] text-[#16425B]"
                 />
+                {formErrors[field.name] && (
+                    <p style={{ color: "red", fontSize: "0.8rem" }}>{formErrors[field.name]}</p>
+                  )}
                 {field.state.meta.errors?.length > 0 && (
                   <p className="text-red-600 text-xs mt-1">{field.state.meta.errors[0]}</p>
                 )}
