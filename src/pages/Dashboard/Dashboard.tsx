@@ -7,6 +7,8 @@ import {
   useCreateCandidateSkillMutation,
   useDeleteCandidateSkillMutation,
 } from "../../services/CandidateSkill/CandidateSkillHooks";
+import CandidateCard from "../../cards/CandidateCard";
+import SkillsCard from "../../cards/SkillsCard";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -23,7 +25,9 @@ const Dashboard = () => {
   const handleToggleSkill = (skillId: number) => {
     if (!candidate) return;
 
-    const hasSkill = candidate.candidateSkills?.some((s) => s.skillId === skillId);
+    const hasSkill = candidate.candidateSkills?.some(
+      (s) => s.skillId === skillId
+    );
 
     const mutation = hasSkill
       ? removeSkillMutation.mutateAsync
@@ -33,7 +37,9 @@ const Dashboard = () => {
       candidateId: Number(candidateID),
       skillId: skillId,
     }).then(() => {
-      queryClient.invalidateQueries({ queryKey: ["candidate", Number(candidateID)] });
+      queryClient.invalidateQueries({
+        queryKey: ["candidate", Number(candidateID)],
+      });
     });
   };
 
@@ -45,47 +51,33 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-[#D9DCD6] p-6 flex flex-col items-center">
-      <div className="bg-white w-full max-w-3xl rounded-xl shadow-md p-8">
-        <section className="mb-6 text-center">
-          <h1 className="text-3xl font-bold text-[#16425B]">Bienvenido, {candidate?.name}</h1>
-          <h2 className="text-lg text-[#2F6690]">{candidate?.surname1}</h2>
-          <p className="text-sm text-gray-700 mt-2">Correo: {candidate?.email}</p>
-        </section>
-
-        <section className="skills-candidate text-center">
-          <h2 className="text-2xl font-semibold text-[#2F6690] mb-4">Skills</h2>
-          <div className="flex flex-wrap justify-center gap-3">
-            {skills?.map((skill) => {
-              const isSelected = candidate?.candidateSkills?.some(
-                (s) => s.skillId === skill.skillId
-              );
-
-              return (
-                <button
-                  key={skill.skillId}
-                  onClick={() => handleToggleSkill(skill.skillId)}
-                  disabled={addSkillMutation.isPending || removeSkillMutation.isPending}
-                  className={`px-4 py-2 rounded-full border transition text-sm font-medium
-                    ${
-                      isSelected
-                        ? "bg-[#2F6690] text-white border-[#2F6690] hover:bg-[#16425B]"
-                        : "bg-white text-[#2F6690] border-[#2F6690] hover:bg-[#E1EEF3]"
-                    }`}
-                >
-                  {skill.name}
-                </button>
-              );
-            })}
+      
+      <div className="w-full max-w-5xl flex flex-col md:flex-row gap-6">
+       
+        <div className="bg-white w-full md:w-1/2 rounded-xl shadow-md p-6 flex flex-col justify-between">
+          <CandidateCard
+            name={candidate?.name}
+            surname1={candidate?.surname1}
+            surname2={candidate?.surname2}
+            email={candidate?.email}
+          />
+          <div className="mt-6 flex justify-center">
+            <button
+              onClick={handleLogOut}
+              className="px-6 py-2 bg-[#3A7CA5] text-white rounded-md hover:bg-[#2F6690] font-semibold"
+            >
+              Logout
+            </button>
           </div>
-        </section>
+        </div>
 
-        <div className="mt-8 flex justify-center">
-          <button
-            onClick={handleLogOut}
-            className="px-6 py-2 bg-[#3A7CA5] text-white rounded-md hover:bg-[#2F6690] font-semibold"
-          >
-            Logout
-          </button>
+        <div className="bg-white w-full md:w-1/2 rounded-xl shadow-md p-6">
+          <SkillsCard
+            skills={skills}
+            candidate={candidate}
+            onToggle={handleToggleSkill}
+            isLoading={addSkillMutation.isPending || removeSkillMutation.isPending}
+          />
         </div>
       </div>
     </div>
