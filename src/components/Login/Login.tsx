@@ -4,14 +4,28 @@ import { AuthInitialState } from '../../models/Auth/Auth';
 import { useNavigate } from '@tanstack/react-router';
 import { toast } from 'react-toastify';
 import { handleApiError } from '../../utils/handleApiError';
+import { useState } from 'react';
+import { loginSchema } from '../../schemas/authSchema';
 
 export default function Login() {
   const loginMutation = useLoginMutation();
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const navigate = useNavigate();
 
   const form = useForm({
     defaultValues: AuthInitialState,
     onSubmit: async ({ value }) => {
+      const validation = loginSchema.safeParse(value);
+        if (!validation.success) {
+          const errors: Record<string, string> = {};
+            validation.error.errors.forEach((err) => {
+            const field = err.path[0] as string;
+            errors[field] = err.message;
+          });
+          setFormErrors(errors);
+          return;
+        }
+
       try {
         await loginMutation.mutateAsync(value);
         toast.success('¡Acceso exitoso!', { position: "top-right", autoClose: 3000 });
@@ -37,13 +51,6 @@ export default function Login() {
         >
           <form.Field
             name="email"
-            validators={{
-              onChange: ({ value }) => {
-                if (!value) return 'El correo es obligatorio';
-                if (!value.includes('@')) return 'Agregue @ a su dirección Email';
-                if (!value.includes('.')) return 'Correo no válido';
-              },
-            }}
           >
             {(field) => (
               <div>
@@ -55,12 +62,15 @@ export default function Login() {
                     className="w-full p-2 outline-none text-[#16425B]"
                     type="email"
                     value={field.state.value}
-                    onChange={(e) => field.handleChange(e.target.value)}
+                    onChange={(e) => {field.handleChange(e.target.value);
+                    setFormErrors((prev) => ({ ...prev, [field.name]: "" }));
+                    }
+                    }
                     placeholder="Correo electrónico"
                   />
                 </div>
-                {field.state.meta.errors?.length > 0 && (
-                  <p className="text-red-500 text-sm mt-1">{field.state.meta.errors[0]}</p>
+                {formErrors[field.name] && (
+                    <p style={{ color: "red", fontSize: "0.8rem" }}>{formErrors[field.name]}</p>
                 )}
               </div>
             )}
@@ -68,14 +78,6 @@ export default function Login() {
 
           <form.Field
             name="password"
-            validators={{
-              onChange: ({ value }) => {
-                if (!value || value.trim() === '') {
-                  return 'La contraseña es obligatoria';
-                }
-                return undefined;
-              },
-            }}
           >
             {(field) => (
               <div>
@@ -87,12 +89,15 @@ export default function Login() {
                     className="w-full p-2 outline-none text-[#16425B]"
                     type="password"
                     value={field.state.value}
-                    onChange={(e) => field.handleChange(e.target.value)}
+                    onChange={(e) => {field.handleChange(e.target.value);
+                    setFormErrors((prev) => ({ ...prev, [field.name]: "" }));
+                    }
+                    }
                     placeholder="Contraseña"
                   />
                 </div>
-                {field.state.meta.errors?.length > 0 && (
-                  <p className="text-red-500 text-sm mt-1">{field.state.meta.errors[0]}</p>
+                {formErrors[field.name] && (
+                    <p style={{ color: "red", fontSize: "0.8rem" }}>{formErrors[field.name]}</p>
                 )}
               </div>
             )}
