@@ -55,7 +55,8 @@ const Offers = () => {
             <OfferCard
               key={offer.offerId}
               offer={offer}
-              handleToAddOffer={handleToAddOffer}
+              handleFunction={handleToAddOffer}
+              buttonText='Postularme'
             />
           )}
         </div>

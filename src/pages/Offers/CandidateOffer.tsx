@@ -3,8 +3,8 @@ import { handleApiError } from '../../utils/handleApiError';
 import { toast } from 'react-toastify';
 import type { Offer } from '../../models/Offer/Offer';
 import { useDeleteCandidateOfferMutation, useGetOffersCandidateById } from '../../services/CandidateOffer/CandidateOfferHooks';
-import OfferCardPostulations from '../../cards/Offer/OfferCardPostulations';
 import { useNavigate } from '@tanstack/react-router';
+import OfferCard from '../../cards/Offer/OfferCard';
 
 
 const CandidateOffer = () => {
@@ -56,10 +56,11 @@ const CandidateOffer = () => {
 
                 <div className="grid md:grid-cols-2 gap-6">
                     {offersCandidate?.map((offer) =>
-                        <OfferCardPostulations
+                        <OfferCard
                         key={offer.offerId}
                         offer={offer}
-                        handleTodeleteOffer={handleDeleteOffer}
+                        handleFunction={handleDeleteOffer}
+                        buttonText='Anular'
                         />
                     )}
                 </div>
