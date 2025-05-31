@@ -6,7 +6,7 @@ import SignUp from '../SignUp/SignUp';
 
 const SignUptRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/logout',
+  path: '/register',
   component: () => (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
       <SignUp />
