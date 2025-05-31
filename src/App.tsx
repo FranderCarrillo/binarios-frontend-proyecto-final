@@ -7,9 +7,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { guestRoute } from './components/Layouts/SignUpLayout';
 import { ToastContainer } from 'react-toastify';
 
-
-
-
 const routeTree = rootRoute.addChildren([
   ...authRoutes,
   ...guestRoute,

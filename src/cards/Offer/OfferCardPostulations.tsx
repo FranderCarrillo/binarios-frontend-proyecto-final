@@ -2,10 +2,10 @@ import type { Offer } from '../../models/Offer/Offer'
 
 type OfferProps = {
     offer: Offer,
-    handleToAddSkill: (offer: Offer) => void
+    handleTodeleteOffer: (offer: Offer) => void
 }
 
-const OfferCardPostulations = ({offer, handleToAddSkill}: OfferProps) => {
+const OfferCardPostulations = ({offer, handleTodeleteOffer}: OfferProps) => {
   return (
     <div
         key={offer.offerId}
@@ -26,13 +26,13 @@ const OfferCardPostulations = ({offer, handleToAddSkill}: OfferProps) => {
                 ))}
             </ul>
         </div>
-
-            <button
-                onClick={() => handleToAddSkill(offer)}
-                className="mt-2 w-full bg-[#3A7CA5] hover:bg-[#2F6690] text-white py-2 px-4 rounded-md font-semibold transition"
-            >
-                Postularme
-            </button>
+        
+        <button
+            onClick={() => handleTodeleteOffer(offer)}
+            className="mt-2 w-full bg-[#ef233c] hover:bg-[#d90429] text-white py-2 px-4 rounded-md font-semibold transition"
+        >
+                Anular
+        </button>
     </div>
   )
 }

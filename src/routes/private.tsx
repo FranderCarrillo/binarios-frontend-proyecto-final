@@ -4,6 +4,7 @@ import { rootRoute } from './__root';
 import NavbarLayout from '../components/Layouts/NavbarLayout';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import Offers from '../pages/Offers/Offers';
+import CandidateOffer from '../pages/Offers/CandidateOffer';
 
 const userLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -27,11 +28,18 @@ const offersRoute = createRoute({
   component: () => <Offers/>,
 });
 
+const offersPostulationsRoute = createRoute({
+  getParentRoute: () => userLayoutRoute,
+  path: 'candidateOffer',
+  component: () => <CandidateOffer/>,
+});
+
 
 export const privateRoutes = [
   userLayoutRoute,
   dashboardRoute,
-  offersRoute,    
+  offersRoute, 
+  offersPostulationsRoute   
 ];
 
 

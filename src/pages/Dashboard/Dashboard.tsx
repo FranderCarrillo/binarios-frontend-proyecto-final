@@ -7,8 +7,8 @@ import {
   useCreateCandidateSkillMutation,
   useDeleteCandidateSkillMutation,
 } from "../../services/CandidateSkill/CandidateSkillHooks";
-import CandidateCard from "../../cards/CandidateCard";
-import SkillsCard from "../../cards/SkillsCard";
+import CandidateCard from "../../cards/Cadidate/CandidateCard";
+import SkillsCard from "../../cards/Skill/SkillsCard";
 
 const Dashboard = () => {
   const navigate = useNavigate();
