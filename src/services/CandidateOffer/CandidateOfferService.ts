@@ -10,3 +10,8 @@ export async function addCandidateOffer(candidateOffer:  CandidateOffer): Promis
    const response = await apiAxios.post(`/CandidateOffers`, candidateOffer);
    return response.data;
 }
+
+export async function deleteCandidateOffer(candidateOffer:  CandidateOffer) {
+   const response = await apiAxios.delete(`/CandidateOffers`, { data: candidateOffer });
+   return response.data;
+}

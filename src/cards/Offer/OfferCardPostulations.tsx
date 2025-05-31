@@ -7,7 +7,7 @@ type OfferProps = {
 
 const OfferCardPostulations = ({offer, handleToAddSkill}: OfferProps) => {
   return (
-     <div
+    <div
         key={offer.offerId}
         className="bg-white rounded-xl shadow-md p-6 border border-[#81C3D7]">
         <h3 className="text-xl font-semibold text-[#2F6690] mb-1">

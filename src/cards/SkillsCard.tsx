@@ -1,5 +1,6 @@
-import type { Skill } from "../../models/Skill/Skill";
-import type { Candidate } from "../../models/Candidate/Candidate";
+import type { Candidate } from "../models/Candidate/Candidate";
+import type { Skill } from "../models/Skill/Skill";
+
 
 interface Props {
   skills?: Skill[];

@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { addCandidateOffer, getOffersByCandidate_ById } from "./CandidateOfferService";
+import { addCandidateOffer, deleteCandidateOffer, getOffersByCandidate_ById } from "./CandidateOfferService";
 
 export const useCreateCandidateOfferMutation = () => {
     const queryClient = useQueryClient()
@@ -14,6 +14,7 @@ export const useCreateCandidateOfferMutation = () => {
 
         return mutation;
 }
+
 export const useGetOffersCandidateById = (id: number) => {
     const { data: offersCandidate, isPending, error } = useQuery(
         {
@@ -23,3 +24,13 @@ export const useGetOffersCandidateById = (id: number) => {
 
     return { offersCandidate, isPending, error };
 };
+
+export const useDeleteCandidateOfferMutation = () => {
+    const mutation = useMutation({
+            mutationFn: deleteCandidateOffer,
+            onSuccess: (res) => {
+                console.log(res);          
+            },
+        })
+        return mutation;
+}
