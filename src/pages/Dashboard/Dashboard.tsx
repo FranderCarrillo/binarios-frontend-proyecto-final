@@ -51,12 +51,7 @@ const Dashboard = () => {
       <div className="w-full max-w-5xl flex flex-col md:flex-row gap-6">
        
         <div className="bg-white w-full md:w-1/2 rounded-xl shadow-md p-6 flex flex-col justify-between">
-          <CandidateCard
-            name={candidate?.name}
-            surname1={candidate?.surname1}
-            surname2={candidate?.surname2}
-            email={candidate?.email}
-          />
+          <CandidateCard candidateInfo={candidate} />
           <div className="mt-6 flex justify-center">
             <button
               onClick={handleLogOut}
