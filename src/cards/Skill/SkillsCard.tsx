@@ -38,7 +38,7 @@ const SkillsCard = ({ skills, candidate, onToggle, isLoading }: Props) => {
                   <img
                     src={skill.icon}
                     alt={skill.name}
-                    className="w-9.5 h-9.5 object-contain transition-opacity duration-200 group-hover:opacity-0"
+                    className="w-8 h-8 object-contain transition-opacity duration-200 group-hover:opacity-0"
                   />
                   <span className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                     {skill.name}
