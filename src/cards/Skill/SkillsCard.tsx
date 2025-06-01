@@ -23,14 +23,27 @@ const SkillsCard = ({ skills, candidate, onToggle, isLoading }: Props) => {
               key={skill.skillId}
               onClick={() => onToggle(skill.skillId)}
               disabled={isLoading}
-              className={`px-4 py-2 rounded-full border transition text-sm font-medium
+              title={skill.name}
+              className={`group px-4 py-2 rounded-full border flex items-center justify-center min-w-[80px] h-[48px]
+                transition font-medium text-m relative overflow-hidden
                 ${
                   isSelected
                     ? "bg-[#2F6690] text-white border-[#2F6690] hover:bg-[#16425B]"
                     : "bg-white text-[#2F6690] border-[#2F6690] hover:bg-[#E1EEF3]"
                 }`}
             >
-              {skill.name}
+              {isSelected ? (
+                <span className="z-10">{skill.name}</span> ) : 
+                ( <>
+                  <img
+                    src={skill.icon}
+                    alt={skill.name}
+                    className="w-9.5 h-9.5 object-contain transition-opacity duration-200 group-hover:opacity-0"
+                  />
+                  <span className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    {skill.name}
+                  </span>
+                </> )}
             </button>
           );
         })}

@@ -55,15 +55,27 @@ const CandidateOffer = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                    {offersCandidate?.map((offer) =>
-                        <OfferCard
-                        key={offer.offerId}
-                        offer={offer}
-                        handleFunction={handleDeleteOffer}
-                        buttonText='Anular'
-                        />
+                    {offersCandidate && offersCandidate.length > 0 ? (
+                        offersCandidate.map((offer) => (
+                            <OfferCard
+                                key={offer.offerId}
+                                offer={offer}
+                                handleFunction={handleDeleteOffer}
+                                buttonText="Anular"
+                            />
+                        ))
+                        ) : (
+                        <div className="col-span-full flex flex-col items-center justify-center text-center mt-8">
+                            <img
+                                src="https://www.svgrepo.com/show/441689/page-not-found.svg"
+                                alt="Sin postulaciones"
+                                className="w-80 h-auto mb-4"
+                            />
+                            <p className="text-[#16425B] text-lg font-medium">Aún no tenés postulaciones registradas</p>
+                        </div>
                     )}
                 </div>
+
             </div>
         </div>
     )

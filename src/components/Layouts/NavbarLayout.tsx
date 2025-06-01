@@ -9,7 +9,7 @@ const NavbarLayout = () => {
     <>
       <nav className="bg-[#16425B] text-white px-6 py-4 shadow-md flex items-center">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div className="flex gap-6">
+          <div className="text-2xl flex gap-6">
             <Link
               to="/user/dashboard"
               className="font-medium hover:text-[#81C3D7] transition"
