@@ -48,7 +48,7 @@ const CandidateOffer = () => {
 
                     <button
                         onClick={toggleView}
-                        className="text-[#2F6690] font-medium underline hover:text-[#16425B] transition"
+                        className="text-[#2F6690] text-xl font-medium underline hover:text-[#16425B] transition"
                     >
                         Ver Ofertas
                     </button>
@@ -71,7 +71,7 @@ const CandidateOffer = () => {
                                 alt="Sin postulaciones"
                                 className="w-80 h-auto mb-4"
                             />
-                            <p className="text-[#16425B] text-lg font-medium">Aún no tenés postulaciones registradas</p>
+                            <p className="text-[#16425B] text-lg font-medium">Aún no hay postulaciones registradas</p>
                         </div>
                     )}
                 </div>

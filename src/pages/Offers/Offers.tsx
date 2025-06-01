@@ -44,20 +44,30 @@ const Offers = () => {
 
           <button
             onClick={toggleView}
-            className="text-[#2F6690] font-medium underline hover:text-[#16425B] transition"
+            className="text-[#2F6690] text-xl font-medium underline hover:text-[#16425B] transition"
           >
             Ver Postulaciones
           </button>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {offers?.map((offer) =>
-            <OfferCard
-              key={offer.offerId}
-              offer={offer}
-              handleFunction={handleToAddOffer}
-              buttonText='Postularme'
-            />
+          {offers && offers.length > 0 ? (
+            offers.map((offer) => (
+              <OfferCard
+                key={offer.offerId}
+                offer={offer}
+                handleFunction={handleToAddOffer}
+                buttonText="Anular"
+              /> ))
+            ) : (
+            <div className="col-span-full flex flex-col items-center justify-center text-center mt-8">
+              <img
+                  src="https://www.svgrepo.com/show/441689/page-not-found.svg"
+                  alt="Sin postulaciones"
+                  className="w-80 h-auto mb-4"
+              />
+              <p className="text-[#16425B] text-lg font-medium">Agrega habilidades para poder ver ofertas</p>
+            </div>
           )}
         </div>
       </div>
