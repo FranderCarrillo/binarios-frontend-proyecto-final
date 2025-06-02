@@ -47,7 +47,6 @@ const OfferCard = ({ offer, handleFunction, buttonText,buttonClassName }: OfferP
       <button
         onClick={() => handleFunction(offer)}
         className={`mt-2 w-full py-2 px-4 rounded-md font-semibold transition ${buttonClassName}`}
-
       >
         {buttonText || "Click"}
       </button>
