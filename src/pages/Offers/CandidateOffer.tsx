@@ -62,6 +62,8 @@ const CandidateOffer = () => {
                                 offer={offer}
                                 handleFunction={handleDeleteOffer}
                                 buttonText="Anular"
+                                buttonClassName="bg-red-600 hover:bg-red-700 text-white"
+
                             />
                         ))
                         ) : (

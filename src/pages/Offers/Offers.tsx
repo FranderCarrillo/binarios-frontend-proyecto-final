@@ -58,6 +58,7 @@ const Offers = () => {
                 offer={offer}
                 handleFunction={handleToAddOffer}
                 buttonText="Postularme"
+                buttonClassName="bg-[#3A7CA5] hover:bg-[#2F6690] text-white"
               /> ))
             ) : (
             <div className="col-span-full flex flex-col items-center justify-center text-center mt-8">
@@ -75,5 +76,4 @@ const Offers = () => {
 
   );
 };
-
 export default Offers;

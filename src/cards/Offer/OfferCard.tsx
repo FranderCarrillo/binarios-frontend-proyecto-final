@@ -3,10 +3,11 @@ import type { Offer } from "../../models/Offer/Offer"
 type OfferProps = {
   offer: Offer
   handleFunction: (offer: Offer) => void,
-  buttonText?: string
+  buttonText?: string,
+  buttonClassName?: string;
 }
 
-const OfferCard = ({ offer, handleFunction, buttonText }: OfferProps) => {
+const OfferCard = ({ offer, handleFunction, buttonText,buttonClassName }: OfferProps) => {
   return (
     <div
       key={offer.offerId}
@@ -45,12 +46,12 @@ const OfferCard = ({ offer, handleFunction, buttonText }: OfferProps) => {
 
       <button
         onClick={() => handleFunction(offer)}
-        className="mt-2 w-full bg-[#3A7CA5] hover:bg-[#2F6690] text-white py-2 px-4 rounded-md font-semibold transition"
+        className={`mt-2 w-full py-2 px-4 rounded-md font-semibold transition ${buttonClassName}`}
+
       >
         {buttonText || "Click"}
       </button>
     </div>
   )
 }
-
 export default OfferCard;
