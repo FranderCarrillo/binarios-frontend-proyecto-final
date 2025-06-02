@@ -11,7 +11,7 @@ interface Props {
 const SkillsCard = ({ skills, candidate, onToggle, isLoading }: Props) => {
   return (
     <section className="skills-candidate text-center">
-      <h2 className="text-2xl font-semibold text-[#2F6690] mb-4">Skills</h2>
+      <h2 className="text-2xl font-semibold text-[#2F6690] mb-4">Habilidades</h2>
       <div className="flex flex-wrap justify-center gap-3">
         {skills?.map((skill) => {
           const isSelected = candidate?.candidateSkills?.some(

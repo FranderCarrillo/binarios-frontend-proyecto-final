@@ -57,7 +57,7 @@ const Offers = () => {
                 key={offer.offerId}
                 offer={offer}
                 handleFunction={handleToAddOffer}
-                buttonText="Anular"
+                buttonText="Postularme"
               /> ))
             ) : (
             <div className="col-span-full flex flex-col items-center justify-center text-center mt-8">

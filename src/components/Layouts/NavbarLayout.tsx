@@ -20,7 +20,7 @@ const NavbarLayout = () => {
               to="/user/offers"
               className="font-medium hover:text-[#81C3D7] transition"
             >
-              Offers
+              Ofertas
             </Link>
           </div>
         </div>

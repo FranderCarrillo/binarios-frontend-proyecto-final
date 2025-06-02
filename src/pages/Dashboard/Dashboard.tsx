@@ -57,7 +57,7 @@ const Dashboard = () => {
               onClick={handleLogOut}
               className="px-6 py-2 bg-[#3A7CA5] text-white rounded-md hover:bg-[#2F6690] font-semibold"
             >
-              Logout
+              Cerrar sesión
             </button>
           </div>
         </div>
