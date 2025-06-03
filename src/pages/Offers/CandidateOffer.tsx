@@ -69,9 +69,9 @@ const CandidateOffer = () => {
                         ) : (
                         <div className="col-span-full flex flex-col items-center justify-center text-center mt-8">
                             <img
-                                src="https://www.svgrepo.com/show/441689/page-not-found.svg"
+                                src="https://www.svgrepo.com/show/83421/job-search.svg"
                                 alt="Sin postulaciones"
-                                className="w-80 h-auto mb-4"
+                                className="w-40 h-auto mb-4"
                             />
                             <p className="text-[#16425B] text-lg font-medium">Aún no hay postulaciones registradas</p>
                         </div>
