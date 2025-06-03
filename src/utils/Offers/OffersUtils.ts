@@ -5,8 +5,7 @@ import { handleApiError } from "../../utils/handleApiError";
 import { useCreateCandidateOfferMutation } from "../../services/CandidateOffer/CandidateOfferHooks";
 import type { Offer } from "../../models/Offer/Offer";
 
-export const useOffersUtil
- = (candidateID: number) => {
+export const useOffersUtil = (candidateID: number) => {
   const navigate = useNavigate();
   const addCandidateOffer = useCreateCandidateOfferMutation();
 
