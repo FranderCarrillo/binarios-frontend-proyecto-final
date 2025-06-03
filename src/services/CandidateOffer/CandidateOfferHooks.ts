@@ -18,7 +18,8 @@ export const useGetOffersCandidateById = (id: number) => {
         {
             queryKey: ['candidateOffer', id],
             queryFn: () => getOffersByCandidate_ById(id)
-        });
+        }
+    );
 
     return { offersCandidate, isPending, error };
 };

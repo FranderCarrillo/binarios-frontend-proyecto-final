@@ -32,11 +32,13 @@ const SignUp = () => {
           autoClose: 3000,
         });
         navigate({ to: "/" });
+        form.reset();
       } catch (error) {
         toast.error("Email ya registrado!", {
           position: "top-right",
           autoClose: 5000,
         });
+        form.resetField("email");
       }
     },
   });

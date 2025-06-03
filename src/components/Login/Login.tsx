@@ -25,13 +25,12 @@ export default function Login() {
           setFormErrors(errors);
           return;
         }
-
       try {
         await loginMutation.mutateAsync(value);
         toast.success('¡Acceso exitoso!', { position: "top-right", autoClose: 3000 });
-        navigate({ to: '/user/dashboard' });
       } catch (error: any) {
         handleApiError(error, 'Error al ingresar. Por favor, intenta de nuevo.');
+        form.reset();
       }
     },
   });

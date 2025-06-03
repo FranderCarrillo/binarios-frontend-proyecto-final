@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAllSkill_Axios,  } from "./SkillServices";
+import { getAllSkills } from "./SkillServices";
 
-export const useGetAllSkill_ReactQuery = () => {
+export const useGetAllSkills = () => {
   const { data: skills, isPending, error } = useQuery({
     queryKey: ['skills'], 
-    queryFn: getAllSkill_Axios, 
+    queryFn: getAllSkills, 
   });
 
   return { skills, isPending, error };

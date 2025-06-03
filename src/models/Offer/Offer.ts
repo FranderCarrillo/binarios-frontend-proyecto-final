@@ -10,5 +10,4 @@ export interface Offer {
   
   company?: Company;                        
   offerSkills?: OfferSkill[];
-
 }
