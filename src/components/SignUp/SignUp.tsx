@@ -136,7 +136,7 @@ const SignUp = () => {
             {(field) => (
               <>
                 <label htmlFor={field.name} className="block text-sm font-medium text-[#2F6690]">
-                  Segundo Apellido
+                  Segundo Apellido *
                 </label>
                 <input
                   id={field.name}
