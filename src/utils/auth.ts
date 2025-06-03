@@ -1,11 +1,9 @@
 import { jwtDecode } from "jwt-decode";
 
-
 export interface LoggedInUser {
     sub: string,
     email: string;
 }
-
 
 export const getLoggedInCandidate = (): LoggedInUser | null => {
     const token = localStorage.getItem("token");

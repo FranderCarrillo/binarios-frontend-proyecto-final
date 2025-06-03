@@ -7,11 +7,9 @@ export const useCreateCandidateOfferMutation = () => {
     const mutation = useMutation({
         mutationFn: addCandidateOffer,
         onSuccess: () => {
-          // Invalidate and refetch
             queryClient.invalidateQueries({ queryKey: ['candidateOffer'] })
         },
         })
-
         return mutation;
 }
 

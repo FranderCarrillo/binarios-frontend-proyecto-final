@@ -2,13 +2,13 @@ import type { Company } from "../Company/Company";
 import type { OfferSkill } from "../OfferSkill/OfferSkill";
 
 export interface Offer {
-  offerId: number;          // ID interno de la oferta
-  companyId: number;        // Clave foránea a Company
-  job: string;              // Título del puesto
-  description: string;      // Descripción del trabajo
+  offerId: number;          
+  companyId: number;        
+  job: string;             
+  description: string;     
 
-  // Relaciones (opcionalmente presentes)
+  
   company?: Company;                        
   offerSkills?: OfferSkill[];
-//   candidateOffers?: CandidateOffer[];
+
 }

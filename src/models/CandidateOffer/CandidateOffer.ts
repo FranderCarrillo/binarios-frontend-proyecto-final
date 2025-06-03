@@ -4,7 +4,7 @@ import type { Offer } from "../Offer/Offer";
 export interface CandidateOffer {
   id?: number;
   candidateId: number;
-  candidate?: Candidate; // opcional
+  candidate?: Candidate; 
   offerId: number;
-  offer?: Offer; // opcional
+  offer?: Offer; 
 }

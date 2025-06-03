@@ -1,5 +1,5 @@
 export interface Skill {
-  skillId: number;               // ID interno de la habilidad
+  skillId: number;             
   name: string;  
-  icon: string;                // Nombre de la habilidad
+  icon: string;               
 }

@@ -23,7 +23,7 @@ const Dashboard = () => {
   const addSkillMutation = useCreateCandidateSkillMutation();
 
   const handleToggleSkill = (skillId: number) => {
-    if (!candidate) return;
+    if (!candidate) return null;
 
     const hasSkill = candidate.candidateSkills?.some((s) => s.skillId === skillId);
 
@@ -49,7 +49,7 @@ const Dashboard = () => {
     <div className="min-h-screen bg-[#D9DCD6] p-6 flex flex-col items-center">
       
       <div className="w-full max-w-5xl flex flex-col md:flex-row gap-6">
-       
+        
         <div className="bg-white w-full md:w-1/2 rounded-xl shadow-md p-6 flex flex-col justify-between">
           <CandidateCard candidateInfo={candidate} />
           <div className="mt-6 flex justify-center">

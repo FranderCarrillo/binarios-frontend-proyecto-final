@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllOffer_Axios, getffersByCandidate } from "./OfferServices";
 
-
 export const useGetAllOffer_ReactQuery = () => {
   const { data: offers, isPending, error } = useQuery({
     queryKey: ['offers'], 
