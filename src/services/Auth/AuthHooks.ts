@@ -13,7 +13,7 @@ export const useLoginMutation = () => {
           if (error?.response?.status === 401) {
             console.log ('credenciales incorrectas');
           }else{
-            console.log ('error descocido');
+            console.log ('error desconocido');
           }
         },
       });
