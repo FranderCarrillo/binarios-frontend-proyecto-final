@@ -25,4 +25,6 @@ export const useGetCandidateById = (id: number) => {
   });
 
   return { candidate, isPending, error };
+
+  
 };
