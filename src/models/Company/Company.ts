@@ -6,6 +6,5 @@ export interface Company {
   webSite: string;        
   email: string;           
 
- 
   offers?: Offer[];
 }

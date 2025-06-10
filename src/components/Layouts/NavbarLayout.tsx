@@ -2,8 +2,8 @@ import { Link, Outlet } from '@tanstack/react-router';
 import { useGetCandidateById } from '../../services/Candidate/CandidateHooks';
 
 const NavbarLayout = () => {
-  const candidateID = localStorage.getItem('ID');
-  const { candidate } = useGetCandidateById(Number(candidateID));
+  // const candidateID = localStorage.getItem('ID');
+  // const { candidate } = useGetCandidateById(Number(candidateID));
 
   return (
     <>
@@ -14,7 +14,7 @@ const NavbarLayout = () => {
               to="/user/dashboard"
               className="font-medium hover:text-[#81C3D7] transition"
             >
-              {candidate?.name || 'Perfil'}
+              Perfil
             </Link>
             <Link
               to="/user/offers"

@@ -8,8 +8,8 @@ export const useLoginMutation = () => {
     const mutation = useMutation({
         mutationFn: Login,
         onSuccess: (res) => {
-          localStorage.setItem('token', res.token);
-          localStorage.setItem('ID', res.candidateId.toString() );
+          localStorage.setItem('token', res);
+          //localStorage.setItem('ID', res.candidateId.toString() );
           navigate({ to: '/user/dashboard' });
         }
       });

@@ -3,23 +3,26 @@ import { useGetAllSkills } from "../../services/Skills/SkillHoks";
 import CandidateCard from "../../cards/Cadidate/CandidateCard";
 import SkillsCard from "../../cards/Skill/SkillsCard";
 import { useDashboardUtil } from "../../utils/Dashboard/dashboardUtil";
+import { getLoggedIn } from "../../utils/auth";
 
 const Dashboard = () => {
-  const candidateID = Number(localStorage.getItem("ID"));
-  const { candidate } = useGetCandidateById(candidateID);
+  const tokenDecode = getLoggedIn();
+  const { candidate } = useGetCandidateById(tokenDecode?.Id || 0);
+  const Id = candidate?.id || 0;
   const { skills } = useGetAllSkills();
 
   const {
     handleToggleSkill,
     handleLogOut,
     isSkillMutating
-  } = useDashboardUtil(candidate, candidateID);
+  } = useDashboardUtil(candidate, Id);
 
   return (
     <div className="min-h-screen bg-[#D9DCD6] p-6 flex flex-col items-center">
       <div className="w-full max-w-5xl flex flex-col md:flex-row gap-6">
         <div className="bg-white w-full md:w-1/2 rounded-xl shadow-md p-6 flex flex-col justify-between">
           <CandidateCard candidateInfo={candidate} />
+          
           <div className="mt-6 flex justify-center">
             <button
               onClick={handleLogOut}
